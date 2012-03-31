@@ -7,6 +7,7 @@
 //
 
 #import "MapViewController.h"
+#import "HotSpotAnnotation.h"
 
 @implementation MapViewController
 
@@ -16,16 +17,26 @@
 @synthesize currentLongitude = _currentLongitude;
 @synthesize annotations = _annotations;
 
-//- (CLLocation*)locationManager
-//{
-//    if(_locationManager == nil)
-//    {
-//        _locationManager = [[CLLocationManager alloc] init];
-//        _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-//        _locationManager.delegate = self;
-//    }
-//    return _locationManager;
-//}
+- (CLLocation*)locationManager
+{
+    if(_locationManager == nil)
+    {
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+        _locationManager.delegate = self;
+        [_locationManager startUpdatingLocation];
+    }
+    return _locationManager;
+}
+
+- (void) initializeMapView
+{
+    CLLocationCoordinate2D mapCenter = CLLocationCoordinate2DMake(self.currentLatitude, self.currentLongitude);
+    MKCoordinateSpan mapSpan = MKCoordinateSpanMake(0.005, 0.010);
+    MKCoordinateRegion mapRegion = MKCoordinateRegionMake(mapCenter, mapSpan);
+    self.mapView.region = mapRegion;
+    self.mapView.mapType = MKMapTypeHybrid;
+}
 
 - (void)updateMapView
 {
@@ -106,9 +117,14 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"inside viewWillAppear");
-    NSString *temp = [NSString stringWithFormat:@"Latitude: %f, longitude: %f", self.currentLatitude, self.currentLongitude];
-    NSLog(temp);
+    HotSpotAnnotation *currentAnn = [[HotSpotAnnotation alloc] init];
+    [currentAnn setCustomLongitude:self.currentLongitude];
+    [currentAnn setCustomLatitude:self.currentLatitude];
+    NSLog(@"Inside viewWillAppear");
+    //NSLog([NSString stringWithFormat:@"Latitude: %f, longitude: %f", self.currentLatitude, self.currentLongitude]);
+    [self.mapView addAnnotation:currentAnn];
+    [self initializeMapView];
+    //[self.mapView addAnnotation([HotSpotAnnotation co])];//foreach
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
