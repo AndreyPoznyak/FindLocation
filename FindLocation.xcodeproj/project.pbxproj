@@ -13,10 +13,15 @@
 		F2076B56152715610005A2BE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2076B54152715610005A2BE /* InfoPlist.strings */; };
 		F2076B58152715610005A2BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2076B57152715610005A2BE /* main.m */; };
 		F2076B5C152715610005A2BE /* FindLocationAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2076B5B152715610005A2BE /* FindLocationAppDelegate.m */; };
-		F2076B5F152715610005A2BE /* FindLocationMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2076B5E152715610005A2BE /* FindLocationMasterViewController.m */; };
-		F2076B62152715610005A2BE /* FindLocationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2076B61152715610005A2BE /* FindLocationDetailViewController.m */; };
-		F2076B65152715610005A2BE /* FindLocationMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2076B63152715610005A2BE /* FindLocationMasterViewController.xib */; };
-		F2076B68152715610005A2BE /* FindLocationDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2076B66152715610005A2BE /* FindLocationDetailViewController.xib */; };
+		F2076B6F1527158E0005A2BE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2076B6E1527158E0005A2BE /* SystemConfiguration.framework */; };
+		F2076B71152715950005A2BE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2076B70152715950005A2BE /* CoreLocation.framework */; };
+		F2076B73152715AD0005A2BE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2076B72152715AD0005A2BE /* MapKit.framework */; };
+		F2076B77152716BD0005A2BE /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2076B75152716BD0005A2BE /* MapViewController.m */; };
+		F2076B78152716BD0005A2BE /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2076B76152716BD0005A2BE /* MapViewController.xib */; };
+		F2076B7C152716DE0005A2BE /* ListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2076B7A152716DE0005A2BE /* ListTableViewController.m */; };
+		F2076B7D152716DE0005A2BE /* ListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2076B7B152716DE0005A2BE /* ListTableViewController.xib */; };
+		F2076B811527173A0005A2BE /* StartingPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2076B7F1527173A0005A2BE /* StartingPointViewController.m */; };
+		F2076B821527173A0005A2BE /* StartingPointViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2076B801527173A0005A2BE /* StartingPointViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,18 +29,24 @@
 		F2076B4B152715610005A2BE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F2076B4D152715610005A2BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F2076B4F152715610005A2BE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		F2076B53152715610005A2BE /* FindLocation-Info.plist */ = {isa = PBXFileReference; path = "FindLocation-Info.plist"; sourceTree = "<group>"; };
+		F2076B53152715610005A2BE /* FindLocation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FindLocation-Info.plist"; sourceTree = "<group>"; };
 		F2076B55152715610005A2BE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F2076B57152715610005A2BE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F2076B59152715610005A2BE /* FindLocation-Prefix.pch */ = {isa = PBXFileReference; path = "FindLocation-Prefix.pch"; sourceTree = "<group>"; };
-		F2076B5A152715610005A2BE /* FindLocationAppDelegate.h */ = {isa = PBXFileReference; path = FindLocationAppDelegate.h; sourceTree = "<group>"; };
+		F2076B59152715610005A2BE /* FindLocation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FindLocation-Prefix.pch"; sourceTree = "<group>"; };
+		F2076B5A152715610005A2BE /* FindLocationAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindLocationAppDelegate.h; sourceTree = "<group>"; };
 		F2076B5B152715610005A2BE /* FindLocationAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindLocationAppDelegate.m; sourceTree = "<group>"; };
-		F2076B5D152715610005A2BE /* FindLocationMasterViewController.h */ = {isa = PBXFileReference; path = FindLocationMasterViewController.h; sourceTree = "<group>"; };
-		F2076B5E152715610005A2BE /* FindLocationMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindLocationMasterViewController.m; sourceTree = "<group>"; };
-		F2076B60152715610005A2BE /* FindLocationDetailViewController.h */ = {isa = PBXFileReference; path = FindLocationDetailViewController.h; sourceTree = "<group>"; };
-		F2076B61152715610005A2BE /* FindLocationDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindLocationDetailViewController.m; sourceTree = "<group>"; };
-		F2076B64152715610005A2BE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FindLocationMasterViewController.xib; sourceTree = "<group>"; };
-		F2076B67152715610005A2BE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FindLocationDetailViewController.xib; sourceTree = "<group>"; };
+		F2076B6E1527158E0005A2BE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F2076B70152715950005A2BE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F2076B72152715AD0005A2BE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F2076B74152716BD0005A2BE /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		F2076B75152716BD0005A2BE /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		F2076B76152716BD0005A2BE /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		F2076B79152716DE0005A2BE /* ListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableViewController.h; sourceTree = "<group>"; };
+		F2076B7A152716DE0005A2BE /* ListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableViewController.m; sourceTree = "<group>"; };
+		F2076B7B152716DE0005A2BE /* ListTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListTableViewController.xib; sourceTree = "<group>"; };
+		F2076B7E1527173A0005A2BE /* StartingPointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartingPointViewController.h; sourceTree = "<group>"; };
+		F2076B7F1527173A0005A2BE /* StartingPointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartingPointViewController.m; sourceTree = "<group>"; };
+		F2076B801527173A0005A2BE /* StartingPointViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartingPointViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +54,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2076B73152715AD0005A2BE /* MapKit.framework in Frameworks */,
+				F2076B71152715950005A2BE /* CoreLocation.framework in Frameworks */,
+				F2076B6F1527158E0005A2BE /* SystemConfiguration.framework in Frameworks */,
 				F2076B4C152715610005A2BE /* UIKit.framework in Frameworks */,
 				F2076B4E152715610005A2BE /* Foundation.framework in Frameworks */,
 				F2076B50152715610005A2BE /* CoreGraphics.framework in Frameworks */,
@@ -72,6 +86,9 @@
 		F2076B4A152715610005A2BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F2076B72152715AD0005A2BE /* MapKit.framework */,
+				F2076B70152715950005A2BE /* CoreLocation.framework */,
+				F2076B6E1527158E0005A2BE /* SystemConfiguration.framework */,
 				F2076B4B152715610005A2BE /* UIKit.framework */,
 				F2076B4D152715610005A2BE /* Foundation.framework */,
 				F2076B4F152715610005A2BE /* CoreGraphics.framework */,
@@ -82,14 +99,17 @@
 		F2076B51152715610005A2BE /* FindLocation */ = {
 			isa = PBXGroup;
 			children = (
+				F2076B7E1527173A0005A2BE /* StartingPointViewController.h */,
+				F2076B7F1527173A0005A2BE /* StartingPointViewController.m */,
+				F2076B801527173A0005A2BE /* StartingPointViewController.xib */,
+				F2076B74152716BD0005A2BE /* MapViewController.h */,
+				F2076B75152716BD0005A2BE /* MapViewController.m */,
+				F2076B76152716BD0005A2BE /* MapViewController.xib */,
+				F2076B79152716DE0005A2BE /* ListTableViewController.h */,
+				F2076B7A152716DE0005A2BE /* ListTableViewController.m */,
+				F2076B7B152716DE0005A2BE /* ListTableViewController.xib */,
 				F2076B5A152715610005A2BE /* FindLocationAppDelegate.h */,
 				F2076B5B152715610005A2BE /* FindLocationAppDelegate.m */,
-				F2076B5D152715610005A2BE /* FindLocationMasterViewController.h */,
-				F2076B5E152715610005A2BE /* FindLocationMasterViewController.m */,
-				F2076B60152715610005A2BE /* FindLocationDetailViewController.h */,
-				F2076B61152715610005A2BE /* FindLocationDetailViewController.m */,
-				F2076B63152715610005A2BE /* FindLocationMasterViewController.xib */,
-				F2076B66152715610005A2BE /* FindLocationDetailViewController.xib */,
 				F2076B52152715610005A2BE /* Supporting Files */,
 			);
 			path = FindLocation;
@@ -158,8 +178,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2076B56152715610005A2BE /* InfoPlist.strings in Resources */,
-				F2076B65152715610005A2BE /* FindLocationMasterViewController.xib in Resources */,
-				F2076B68152715610005A2BE /* FindLocationDetailViewController.xib in Resources */,
+				F2076B78152716BD0005A2BE /* MapViewController.xib in Resources */,
+				F2076B7D152716DE0005A2BE /* ListTableViewController.xib in Resources */,
+				F2076B821527173A0005A2BE /* StartingPointViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,8 +193,9 @@
 			files = (
 				F2076B58152715610005A2BE /* main.m in Sources */,
 				F2076B5C152715610005A2BE /* FindLocationAppDelegate.m in Sources */,
-				F2076B5F152715610005A2BE /* FindLocationMasterViewController.m in Sources */,
-				F2076B62152715610005A2BE /* FindLocationDetailViewController.m in Sources */,
+				F2076B77152716BD0005A2BE /* MapViewController.m in Sources */,
+				F2076B7C152716DE0005A2BE /* ListTableViewController.m in Sources */,
+				F2076B811527173A0005A2BE /* StartingPointViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,22 +208,6 @@
 				F2076B55152715610005A2BE /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		F2076B63152715610005A2BE /* FindLocationMasterViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F2076B64152715610005A2BE /* en */,
-			);
-			name = FindLocationMasterViewController.xib;
-			sourceTree = "<group>";
-		};
-		F2076B66152715610005A2BE /* FindLocationDetailViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F2076B67152715610005A2BE /* en */,
-			);
-			name = FindLocationDetailViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -227,7 +233,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -245,7 +251,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -258,6 +264,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FindLocation/FindLocation-Prefix.pch";
 				INFOPLIST_FILE = "FindLocation/FindLocation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -269,6 +276,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FindLocation/FindLocation-Prefix.pch";
 				INFOPLIST_FILE = "FindLocation/FindLocation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

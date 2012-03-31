@@ -8,7 +8,7 @@
 
 #import "FindLocationAppDelegate.h"
 
-#import "FindLocationMasterViewController.h"
+#import "StartingPointViewController.h"
 
 @implementation FindLocationAppDelegate
 
@@ -20,7 +20,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 
-    FindLocationMasterViewController *masterViewController = [[FindLocationMasterViewController alloc] initWithNibName:@"FindLocationMasterViewController" bundle:nil];
+    StartingPointViewController *masterViewController = [[StartingPointViewController alloc] initWithNibName:@"StartingPointViewController" bundle:nil];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
