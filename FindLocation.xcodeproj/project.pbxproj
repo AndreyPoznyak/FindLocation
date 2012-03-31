@@ -1,0 +1,300 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F2076B4C152715610005A2BE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2076B4B152715610005A2BE /* UIKit.framework */; };
+		F2076B4E152715610005A2BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2076B4D152715610005A2BE /* Foundation.framework */; };
+		F2076B50152715610005A2BE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2076B4F152715610005A2BE /* CoreGraphics.framework */; };
+		F2076B56152715610005A2BE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2076B54152715610005A2BE /* InfoPlist.strings */; };
+		F2076B58152715610005A2BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2076B57152715610005A2BE /* main.m */; };
+		F2076B5C152715610005A2BE /* FindLocationAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2076B5B152715610005A2BE /* FindLocationAppDelegate.m */; };
+		F2076B5F152715610005A2BE /* FindLocationMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2076B5E152715610005A2BE /* FindLocationMasterViewController.m */; };
+		F2076B62152715610005A2BE /* FindLocationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2076B61152715610005A2BE /* FindLocationDetailViewController.m */; };
+		F2076B65152715610005A2BE /* FindLocationMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2076B63152715610005A2BE /* FindLocationMasterViewController.xib */; };
+		F2076B68152715610005A2BE /* FindLocationDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2076B66152715610005A2BE /* FindLocationDetailViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F2076B47152715610005A2BE /* FindLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2076B4B152715610005A2BE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F2076B4D152715610005A2BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F2076B4F152715610005A2BE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F2076B53152715610005A2BE /* FindLocation-Info.plist */ = {isa = PBXFileReference; path = "FindLocation-Info.plist"; sourceTree = "<group>"; };
+		F2076B55152715610005A2BE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F2076B57152715610005A2BE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F2076B59152715610005A2BE /* FindLocation-Prefix.pch */ = {isa = PBXFileReference; path = "FindLocation-Prefix.pch"; sourceTree = "<group>"; };
+		F2076B5A152715610005A2BE /* FindLocationAppDelegate.h */ = {isa = PBXFileReference; path = FindLocationAppDelegate.h; sourceTree = "<group>"; };
+		F2076B5B152715610005A2BE /* FindLocationAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindLocationAppDelegate.m; sourceTree = "<group>"; };
+		F2076B5D152715610005A2BE /* FindLocationMasterViewController.h */ = {isa = PBXFileReference; path = FindLocationMasterViewController.h; sourceTree = "<group>"; };
+		F2076B5E152715610005A2BE /* FindLocationMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindLocationMasterViewController.m; sourceTree = "<group>"; };
+		F2076B60152715610005A2BE /* FindLocationDetailViewController.h */ = {isa = PBXFileReference; path = FindLocationDetailViewController.h; sourceTree = "<group>"; };
+		F2076B61152715610005A2BE /* FindLocationDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindLocationDetailViewController.m; sourceTree = "<group>"; };
+		F2076B64152715610005A2BE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FindLocationMasterViewController.xib; sourceTree = "<group>"; };
+		F2076B67152715610005A2BE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FindLocationDetailViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F2076B44152715610005A2BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2076B4C152715610005A2BE /* UIKit.framework in Frameworks */,
+				F2076B4E152715610005A2BE /* Foundation.framework in Frameworks */,
+				F2076B50152715610005A2BE /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F2076B3C152715610005A2BE = {
+			isa = PBXGroup;
+			children = (
+				F2076B51152715610005A2BE /* FindLocation */,
+				F2076B4A152715610005A2BE /* Frameworks */,
+				F2076B48152715610005A2BE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F2076B48152715610005A2BE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F2076B47152715610005A2BE /* FindLocation.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F2076B4A152715610005A2BE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F2076B4B152715610005A2BE /* UIKit.framework */,
+				F2076B4D152715610005A2BE /* Foundation.framework */,
+				F2076B4F152715610005A2BE /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F2076B51152715610005A2BE /* FindLocation */ = {
+			isa = PBXGroup;
+			children = (
+				F2076B5A152715610005A2BE /* FindLocationAppDelegate.h */,
+				F2076B5B152715610005A2BE /* FindLocationAppDelegate.m */,
+				F2076B5D152715610005A2BE /* FindLocationMasterViewController.h */,
+				F2076B5E152715610005A2BE /* FindLocationMasterViewController.m */,
+				F2076B60152715610005A2BE /* FindLocationDetailViewController.h */,
+				F2076B61152715610005A2BE /* FindLocationDetailViewController.m */,
+				F2076B63152715610005A2BE /* FindLocationMasterViewController.xib */,
+				F2076B66152715610005A2BE /* FindLocationDetailViewController.xib */,
+				F2076B52152715610005A2BE /* Supporting Files */,
+			);
+			path = FindLocation;
+			sourceTree = "<group>";
+		};
+		F2076B52152715610005A2BE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F2076B53152715610005A2BE /* FindLocation-Info.plist */,
+				F2076B54152715610005A2BE /* InfoPlist.strings */,
+				F2076B57152715610005A2BE /* main.m */,
+				F2076B59152715610005A2BE /* FindLocation-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F2076B46152715610005A2BE /* FindLocation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2076B6B152715610005A2BE /* Build configuration list for PBXNativeTarget "FindLocation" */;
+			buildPhases = (
+				F2076B43152715610005A2BE /* Sources */,
+				F2076B44152715610005A2BE /* Frameworks */,
+				F2076B45152715610005A2BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FindLocation;
+			productName = FindLocation;
+			productReference = F2076B47152715610005A2BE /* FindLocation.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F2076B3E152715610005A2BE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = bsuir;
+			};
+			buildConfigurationList = F2076B41152715610005A2BE /* Build configuration list for PBXProject "FindLocation" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F2076B3C152715610005A2BE;
+			productRefGroup = F2076B48152715610005A2BE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F2076B46152715610005A2BE /* FindLocation */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F2076B45152715610005A2BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2076B56152715610005A2BE /* InfoPlist.strings in Resources */,
+				F2076B65152715610005A2BE /* FindLocationMasterViewController.xib in Resources */,
+				F2076B68152715610005A2BE /* FindLocationDetailViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F2076B43152715610005A2BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2076B58152715610005A2BE /* main.m in Sources */,
+				F2076B5C152715610005A2BE /* FindLocationAppDelegate.m in Sources */,
+				F2076B5F152715610005A2BE /* FindLocationMasterViewController.m in Sources */,
+				F2076B62152715610005A2BE /* FindLocationDetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F2076B54152715610005A2BE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2076B55152715610005A2BE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F2076B63152715610005A2BE /* FindLocationMasterViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2076B64152715610005A2BE /* en */,
+			);
+			name = FindLocationMasterViewController.xib;
+			sourceTree = "<group>";
+		};
+		F2076B66152715610005A2BE /* FindLocationDetailViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2076B67152715610005A2BE /* en */,
+			);
+			name = FindLocationDetailViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F2076B69152715610005A2BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F2076B6A152715610005A2BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F2076B6C152715610005A2BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FindLocation/FindLocation-Prefix.pch";
+				INFOPLIST_FILE = "FindLocation/FindLocation-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F2076B6D152715610005A2BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FindLocation/FindLocation-Prefix.pch";
+				INFOPLIST_FILE = "FindLocation/FindLocation-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F2076B41152715610005A2BE /* Build configuration list for PBXProject "FindLocation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2076B69152715610005A2BE /* Debug */,
+				F2076B6A152715610005A2BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2076B6B152715610005A2BE /* Build configuration list for PBXNativeTarget "FindLocation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2076B6C152715610005A2BE /* Debug */,
+				F2076B6D152715610005A2BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F2076B3E152715610005A2BE /* Project object */;
+}
