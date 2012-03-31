@@ -22,6 +22,7 @@
 		F2076B7D152716DE0005A2BE /* ListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2076B7B152716DE0005A2BE /* ListTableViewController.xib */; };
 		F2076B811527173A0005A2BE /* StartingPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2076B7F1527173A0005A2BE /* StartingPointViewController.m */; };
 		F2076B821527173A0005A2BE /* StartingPointViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2076B801527173A0005A2BE /* StartingPointViewController.xib */; };
+		F2076B891527534B0005A2BE /* HotSpotAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2076B881527534B0005A2BE /* HotSpotAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,8 @@
 		F2076B7E1527173A0005A2BE /* StartingPointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartingPointViewController.h; sourceTree = "<group>"; };
 		F2076B7F1527173A0005A2BE /* StartingPointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartingPointViewController.m; sourceTree = "<group>"; };
 		F2076B801527173A0005A2BE /* StartingPointViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartingPointViewController.xib; sourceTree = "<group>"; };
+		F2076B871527534B0005A2BE /* HotSpotAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotSpotAnnotation.h; sourceTree = "<group>"; };
+		F2076B881527534B0005A2BE /* HotSpotAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotSpotAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +102,8 @@
 		F2076B51152715610005A2BE /* FindLocation */ = {
 			isa = PBXGroup;
 			children = (
+				F2076B871527534B0005A2BE /* HotSpotAnnotation.h */,
+				F2076B881527534B0005A2BE /* HotSpotAnnotation.m */,
 				F2076B7E1527173A0005A2BE /* StartingPointViewController.h */,
 				F2076B7F1527173A0005A2BE /* StartingPointViewController.m */,
 				F2076B801527173A0005A2BE /* StartingPointViewController.xib */,
@@ -196,6 +201,7 @@
 				F2076B77152716BD0005A2BE /* MapViewController.m in Sources */,
 				F2076B7C152716DE0005A2BE /* ListTableViewController.m in Sources */,
 				F2076B811527173A0005A2BE /* StartingPointViewController.m in Sources */,
+				F2076B891527534B0005A2BE /* HotSpotAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

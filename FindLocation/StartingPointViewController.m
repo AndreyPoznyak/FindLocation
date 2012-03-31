@@ -12,17 +12,26 @@
 
 @implementation StartingPointViewController
 
-- (IBAction)viewList 
+- (IBAction)viewList
 {
     NSLog(@"Inside action of button viewList");
+    NSArray *temp = [NSArray arrayWithObjects:@"1", @"2", @"3", nil];
     ListTableViewController *listController = [[ListTableViewController alloc] initWithNibName:@"ListTableViewController" bundle:nil];
+    [listController setListOfHotSpots:temp];
     [self.navigationController pushViewController:listController animated:YES];
 }
 
-- (IBAction)viewMap 
+- (NSArray *)mapAnnotations                          //interaction with HotSpotAnnotation should be here
+{
+    NSArray *temp = [NSArray arrayWithObjects:@"1", @"2", nil];//get the list here (of hotspots coordinates)
+    return temp;
+}
+
+- (IBAction)viewMap
 {
     NSLog(@"Inside action of button viewMap");
     MapViewController *mapController = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
+    //mapController.annotations = [self mapAnnotations];            //uncomment then!!!
     [self.navigationController pushViewController:mapController animated:YES];
 }
 

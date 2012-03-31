@@ -10,4 +10,6 @@
 
 @interface ListTableViewController : UITableViewController
 
+@property (nonatomic, strong) NSArray *listOfHotSpots;
+
 @end
