@@ -35,7 +35,7 @@
     MKCoordinateSpan mapSpan = MKCoordinateSpanMake(0.005, 0.010);
     MKCoordinateRegion mapRegion = MKCoordinateRegionMake(mapCenter, mapSpan);
     self.mapView.region = mapRegion;
-    self.mapView.mapType = MKMapTypeHybrid;
+    self.mapView.mapType = MKMapTypeStandard;
 }
 
 - (void)updateMapView
@@ -59,15 +59,12 @@
     [self updateMapView];
 }
 
-- (void)locationManager:(CLLocationManager *)manager 
-     didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation*)oldLocation
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation*)oldLocation
 {
     NSLog(@"Core location claims to have a position");
 }
 
-- (void)locationManager:(CLLocationManager *)manager
-       didFailWithError:(NSError *)error
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
     NSLog(@"Core location can't get a fix");
 }

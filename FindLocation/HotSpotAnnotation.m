@@ -32,7 +32,7 @@
     return @"Subtitile of HotSpot";
 }
 
-- (CLLocationCoordinate2D)coordinate//:(double)latitude withLongitude:(double)longitude
+- (CLLocationCoordinate2D)coordinate
 {
     CLLocationCoordinate2D coordinate;
     coordinate.longitude = self.customLongitude;//longitude;

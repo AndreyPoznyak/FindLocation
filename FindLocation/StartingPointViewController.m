@@ -12,12 +12,39 @@
 
 @implementation StartingPointViewController
 
+- (NSArray *)getListOfHotSpots
+{
+    //NSArray *hotSpots = [NSArray array];
+    NSArray *hotSpots = [NSArray arrayWithObjects:@"1", @"2", nil];
+    
+    CFArrayRef interfaces = CNCopySupportedInterfaces();
+    NSLog(@"here it is %@", interfaces);
+    CFIndex count = CFArrayGetCount(interfaces);
+    
+    for (int i = 0; i < count; i++)
+    {
+        CFStringRef interface = CFArrayGetValueAtIndex(interfaces, i);
+        CFDictionaryRef netinfo = CNCopyCurrentNetworkInfo(interface);
+        if (netinfo && CFDictionaryContainsKey(netinfo, kCNNetworkInfoKeySSID))
+        {
+            NSString *ssid = (__bridge NSString *)CFDictionaryGetValue(netinfo, kCNNetworkInfoKeySSID);
+            NSString *bssid = (__bridge NSString *)CFDictionaryGetValue(netinfo, kCNNetworkInfoKeyBSSID);
+            NSString *ssiddata = (__bridge NSString *)CFDictionaryGetValue(netinfo, kCNNetworkInfoKeySSIDData);
+            // Compare with your needed ssid here
+            NSLog(@"\n------\n%@\n%@\n%@", ssid, bssid, ssiddata);
+        }
+        if (netinfo) CFRelease(netinfo);
+    }
+    CFRelease(interfaces);
+    
+    return hotSpots;
+}
+
 - (IBAction)viewList
 {
     NSLog(@"Inside action of button viewList");
-    NSArray *temp = [NSArray arrayWithObjects:@"1", @"2", @"3", nil];
     ListTableViewController *listController = [[ListTableViewController alloc] initWithNibName:@"ListTableViewController" bundle:nil];
-    [listController setListOfHotSpots:temp];
+    [listController setListOfHotSpots:[self getListOfHotSpots]];
     [self.navigationController pushViewController:listController animated:YES];
 }
 
@@ -57,6 +84,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"Menu";
     // Do any additional setup after loading the view from its nib.
 }
 
