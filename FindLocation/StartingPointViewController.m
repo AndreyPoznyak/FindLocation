@@ -17,6 +17,8 @@
     //NSArray *hotSpots = [NSArray array];
     NSArray *hotSpots = [NSArray arrayWithObjects:@"1", @"2", nil];
     
+    if(!TARGET_IPHONE_SIMULATOR)
+    {
     CFArrayRef interfaces = CNCopySupportedInterfaces();
     NSLog(@"here it is %@", interfaces);
     CFIndex count = CFArrayGetCount(interfaces);
@@ -36,6 +38,7 @@
         if (netinfo) CFRelease(netinfo);
     }
     CFRelease(interfaces);
+    }
     
     return hotSpots;
 }
