@@ -54,57 +54,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //stuff with private library
-    NSMutableArray *networks;
-    void *libHandle;
-    void *airportHandle;
-//    bool periodic;
-//    NSTimeInterval timeInSec;
-//    NSTimer *timer;
-//    NSThread *workThread;
-    networks = [[NSMutableArray alloc] init];
-    int (*open)(void *);
-    int (*bind)(void *, NSString *);
-    int (*close)(void *);
-    //int (*scan)(void *, NSArray **, void *);
-    int (*scan)(void *, NSArray **, NSDictionary *);
-//#if !(TARGET_IPHONE_SIMULATOR)
-    
-  // libHandle = dlopen("/System/Library/SystemConfiguration/WiFiManager.bundle/WiFiManager", RTLD_LAZY);
-    libHandle = dlopen("/System/Library/SystemConfiguration/IPConfiguration.bundle/IPConfiguration", RTLD_LAZY);
-    
-    char *error;
-    if (libHandle == NULL && (error = dlerror()) != NULL) {
-        NSLog(@"%c | %s",error, error);
-        //exit(-1);
-    }
-    
-    open = dlsym(libHandle, "Apple80211Open");
-    bind = dlsym(libHandle, "Apple80211BindToInterface");
-    close = dlsym(libHandle, "Apple80211Close");
-    scan = dlsym(libHandle, "Apple80211Scan");
-    
-    open(&airportHandle);
-    bind(airportHandle, @"en0");
-    
-    NSDictionary *parameters = [[NSDictionary alloc] init];
-    //void *parameters;
-    //NSArray *scan_networks;
-    
-    //#if !(TARGET_IPHONE_SIMULATOR)
-    
-    scan(airportHandle, &networks, parameters);
-
-    NSMutableString *result = [[NSMutableString alloc] initWithString:@"Networks:\n"];
-    
-    for (id key in networks) {
-        [result appendString:[NSString stringWithFormat:@"%@ %@ %@\n", 
-                              [key objectForKey:@"BSSID"],
-                              [key objectForKey:@"RSSI"],
-                              [key objectForKey:@"SSID_STR"]
-                              ]];
-    }
-    NSLog(result);
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -146,8 +95,12 @@
     }
     
     // Configure the cell...
-    id temp = [self.listOfHotSpots objectAtIndex:indexPath.row];
-    cell.textLabel.text = temp;
+    NetworkInfo *temp = [self.listOfHotSpots objectAtIndex:indexPath.row];
+    if(!temp.isCurrent){
+        cell.textLabel.text = temp.networkName;
+    }else{
+        cell.textLabel.text = [temp.networkName stringByAppendingString:@"- current"];         //doesn't work, check in starting point
+    }
     
     return cell;
 }

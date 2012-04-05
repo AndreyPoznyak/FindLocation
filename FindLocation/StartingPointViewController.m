@@ -14,13 +14,14 @@
 
 - (NSArray *)getListOfHotSpots
 {
-    //NSArray *hotSpots = [NSArray array];
-    NSArray *hotSpots = [NSArray arrayWithObjects:@"1", @"2", nil];
+    NSMutableArray *hotSpots = [NSMutableArray array];
+    NSString *currentBssid = [[NSString alloc] init];
+    //NSArray *hotSpots = [NSArray arrayWithObjects:@"1", @"2", nil];
     
     if(!TARGET_IPHONE_SIMULATOR)
     {
     CFArrayRef interfaces = CNCopySupportedInterfaces();
-    NSLog(@"here it is %@", interfaces);
+    //NSLog(@"here it is %@", interfaces);
     CFIndex count = CFArrayGetCount(interfaces);
     
     for (int i = 0; i < count; i++)
@@ -29,16 +30,67 @@
         CFDictionaryRef netinfo = CNCopyCurrentNetworkInfo(interface);
         if (netinfo && CFDictionaryContainsKey(netinfo, kCNNetworkInfoKeySSID))
         {
-            NSString *ssid = (__bridge NSString *)CFDictionaryGetValue(netinfo, kCNNetworkInfoKeySSID);
-            NSString *bssid = (__bridge NSString *)CFDictionaryGetValue(netinfo, kCNNetworkInfoKeyBSSID);
-            NSString *ssiddata = (__bridge NSString *)CFDictionaryGetValue(netinfo, kCNNetworkInfoKeySSIDData);
+          //  NSString *ssid = (__bridge NSString *)CFDictionaryGetValue(netinfo, kCNNetworkInfoKeySSID);
+            currentBssid = (__bridge NSString *)CFDictionaryGetValue(netinfo, kCNNetworkInfoKeyBSSID);
+          //  NSString *ssiddata = (__bridge NSString *)CFDictionaryGetValue(netinfo, kCNNetworkInfoKeySSIDData);
             // Compare with your needed ssid here
-            NSLog(@"\n------\n%@\n%@\n%@", ssid, bssid, ssiddata);
+         //   NSLog(@"\n------\n%@\n%@\n%@", ssid, currentBssid, ssiddata);
         }
         if (netinfo) CFRelease(netinfo);
     }
     CFRelease(interfaces);
     }
+    
+    //---------------------------stuff with private library-----------------------------
+    NSMutableArray *networks;
+    void *libHandle;
+    void *airportHandle;
+    networks = [[NSMutableArray alloc] init];
+    int (*open)(void *);
+    int (*bind)(void *, NSString *);
+    int (*close)(void *);
+    //int (*scan)(void *, NSArray **, void *);
+    int (*scan)(void *, NSArray **, NSDictionary *);
+    //#if !(TARGET_IPHONE_SIMULATOR)
+    
+    // libHandle = dlopen("/System/Library/SystemConfiguration/WiFiManager.bundle/WiFiManager", RTLD_LAZY);
+    libHandle = dlopen("/System/Library/SystemConfiguration/IPConfiguration.bundle/IPConfiguration", RTLD_LAZY);
+    
+    char *error;
+    if (libHandle == NULL && (error = dlerror()) != NULL) {
+        NSLog(@"%s", error);
+        //exit(-1);
+    }
+    
+    open = dlsym(libHandle, "Apple80211Open");
+    bind = dlsym(libHandle, "Apple80211BindToInterface");
+    close = dlsym(libHandle, "Apple80211Close");
+    scan = dlsym(libHandle, "Apple80211Scan");
+    
+    open(&airportHandle);
+    bind(airportHandle, @"en0");
+    
+    NSDictionary *parameters = [[NSDictionary alloc] init];
+    //void *parameters;
+    //NSArray *scan_networks;
+    
+    //#if !(TARGET_IPHONE_SIMULATOR)
+    
+    scan(airportHandle, &networks, parameters);
+    
+    //NSMutableString *result = [[NSMutableString alloc] initWithString:@"Networks:\n"];
+    BOOL ind = NO;
+    
+    for (id key in networks) 
+    {
+       // [result appendString:[NSString stringWithFormat:@"%@ %@ %@\n", 
+        if(currentBssid == [key objectForKey:@"BSSID"]) ind = YES;
+        [hotSpots addObject:[NetworkInfo newNetwork:[key objectForKey:@"SSID_STR"] 
+                                         andStrength:[key objectForKey:@"RSSI"]
+                                         andBssid:[key objectForKey:@"BSSID"]
+                                         andCurrent:ind]];
+    }
+    //NSLog(result);
     
     return hotSpots;
 }

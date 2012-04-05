@@ -23,6 +23,7 @@
 		F2076B811527173A0005A2BE /* StartingPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2076B7F1527173A0005A2BE /* StartingPointViewController.m */; };
 		F2076B821527173A0005A2BE /* StartingPointViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2076B801527173A0005A2BE /* StartingPointViewController.xib */; };
 		F2076B891527534B0005A2BE /* HotSpotAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2076B881527534B0005A2BE /* HotSpotAnnotation.m */; };
+		F282AFE8152E430F00EC987C /* NetworkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F282AFE7152E430F00EC987C /* NetworkInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,8 @@
 		F2076B801527173A0005A2BE /* StartingPointViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartingPointViewController.xib; sourceTree = "<group>"; };
 		F2076B871527534B0005A2BE /* HotSpotAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotSpotAnnotation.h; sourceTree = "<group>"; };
 		F2076B881527534B0005A2BE /* HotSpotAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotSpotAnnotation.m; sourceTree = "<group>"; };
+		F282AFE6152E430F00EC987C /* NetworkInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkInfo.h; sourceTree = "<group>"; };
+		F282AFE7152E430F00EC987C /* NetworkInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 				F2076B7B152716DE0005A2BE /* ListTableViewController.xib */,
 				F2076B5A152715610005A2BE /* FindLocationAppDelegate.h */,
 				F2076B5B152715610005A2BE /* FindLocationAppDelegate.m */,
+				F282AFE6152E430F00EC987C /* NetworkInfo.h */,
+				F282AFE7152E430F00EC987C /* NetworkInfo.m */,
 				F2076B52152715610005A2BE /* Supporting Files */,
 			);
 			path = FindLocation;
@@ -202,6 +207,7 @@
 				F2076B7C152716DE0005A2BE /* ListTableViewController.m in Sources */,
 				F2076B811527173A0005A2BE /* StartingPointViewController.m in Sources */,
 				F2076B891527534B0005A2BE /* HotSpotAnnotation.m in Sources */,
+				F282AFE8152E430F00EC987C /* NetworkInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +313,7 @@
 				F2076B6D152715610005A2BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

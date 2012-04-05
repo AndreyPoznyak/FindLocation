@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SystemConfiguration/CaptiveNetwork.h"
+#include <dlfcn.h>
+#import "NetworkInfo.h"
+
 
 @interface StartingPointViewController : UIViewController
 
