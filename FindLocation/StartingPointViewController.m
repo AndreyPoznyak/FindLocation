@@ -84,7 +84,7 @@
     for (id key in networks) 
     {
        // [result appendString:[NSString stringWithFormat:@"%@ %@ %@\n", 
-        if(currentBssid == [key objectForKey:@"BSSID"]) ind = YES;
+        if([currentBssid isEqualToString:[key objectForKey:@"BSSID"]]) ind = YES;
         [hotSpots addObject:[NetworkInfo newNetwork:[key objectForKey:@"SSID_STR"] 
                                          andStrength:[key objectForKey:@"RSSI"]
                                          andBssid:[key objectForKey:@"BSSID"]

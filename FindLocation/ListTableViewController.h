@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NetworkInfo.h"
+#import "NetworkDetailViewController.h"
 
 @interface ListTableViewController : UITableViewController
 

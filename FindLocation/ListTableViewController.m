@@ -99,7 +99,7 @@
     if(!temp.isCurrent){
         cell.textLabel.text = temp.networkName;
     }else{
-        cell.textLabel.text = [temp.networkName stringByAppendingString:@"- current"];         //doesn't work, check in starting point
+        cell.textLabel.text = [temp.networkName stringByAppendingString:@" - current"];
     }
     
     return cell;
@@ -149,12 +149,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+    
+      NetworkDetailViewController *detailViewController = [[NetworkDetailViewController alloc] initWithNibName:@"NetworkDetailViewController" bundle:nil];
      // ...
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+     
 }
 
 @end
