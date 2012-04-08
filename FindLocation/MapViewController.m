@@ -96,6 +96,7 @@
     CLLocation *curPosition = self.locationManager.location;
     self.currentLatitude = curPosition.coordinate.latitude;
     self.currentLongitude = curPosition.coordinate.longitude;
+    self.navigationItem.title = @"Map";
 }
 
 - (void)viewDidUnload

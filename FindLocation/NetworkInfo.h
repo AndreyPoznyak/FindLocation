@@ -11,10 +11,10 @@
 @interface NetworkInfo : NSObject
 
 @property (nonatomic, strong) NSString *networkName;
-@property (nonatomic) int signalStrength;
+@property (nonatomic, strong) NSString *signalStrength;
 @property (nonatomic, strong) NSString *networkBSSID;
 @property (nonatomic) BOOL isCurrent;
 
-+ (NetworkInfo *)newNetwork: (NSString *)name andStrength:(int)strength andBssid:(NSString *)bssid andCurrent:(BOOL)current;
++ (NetworkInfo *)newNetwork: (NSString *)name andStrength:(NSString *)strength andBssid:(NSString *)bssid andCurrent:(BOOL)current;
 
 @end

@@ -9,9 +9,11 @@
 #import "NetworkDetailViewController.h"
 
 @implementation NetworkDetailViewController
-@synthesize nameField;
-@synthesize bssidFiled;
-@synthesize signalField;
+
+@synthesize currentNetwork = _currentNetwork;
+@synthesize nameField = _nameField;
+@synthesize bssidFiled = _bssidFiled;
+@synthesize signalField = _signalField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,6 +38,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.navigationItem.title = self.nameField.text = self.currentNetwork.networkName;
+    self.bssidFiled.text = self.currentNetwork.networkBSSID;
+    self.signalField.text = self.currentNetwork.signalStrength;
 }
 
 - (void)viewDidUnload

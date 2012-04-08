@@ -15,11 +15,12 @@
 @synthesize signalStrength = _signalStrength;
 @synthesize isCurrent = _isCurrent;
 
-+ (NetworkInfo *)newNetwork:(NSString *)name andStrength:(int)strength andBssid:(NSString *)bssid andCurrent:(BOOL)current
++ (NetworkInfo *)newNetwork:(NSString *)name andStrength:(NSString *)strength andBssid:(NSString *)bssid andCurrent:(BOOL)current
 {
+    //NSLog(@"%@ - %@", name, strength);
     NetworkInfo *net = [[NetworkInfo alloc] init];
     [net setNetworkName:name];
-    [net setSignalStrength:strength];
+    [net setSignalStrength:[NSString stringWithFormat:@"%@", strength]];
     [net setNetworkBSSID:bssid];
     [net setIsCurrent:current];
     return net;
