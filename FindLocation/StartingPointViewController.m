@@ -9,6 +9,7 @@
 #import "StartingPointViewController.h"
 #import "MapViewController.h"
 #import "ListTableViewController.h"
+#import "StuffViewController.h"
 
 @implementation StartingPointViewController
 
@@ -100,7 +101,14 @@
     NSLog(@"Inside action of button viewList");
     ListTableViewController *listController = [[ListTableViewController alloc] initWithNibName:@"ListTableViewController" bundle:nil];
     [listController setListOfHotSpots:[self getListOfHotSpots]];
-    [self.navigationController pushViewController:listController animated:YES];
+    if([listController.listOfHotSpots count] == 0){//just stuff with modal view
+        StuffViewController *controller = [[StuffViewController alloc] initWithNibName:@"StuffViewController" bundle:nil];
+        //UINavigationController *stuffNavController = [[UINavigationController alloc] initWithRootViewController:controller];
+        //[self presentModalViewController:stuffNavController animated:YES];//define "cancel" button in stuffViewController
+        [self.navigationController pushViewController:controller animated:YES];
+    }else{
+        [self.navigationController pushViewController:listController animated:YES];
+    }
 }
 
 - (NSArray *)mapAnnotations                          //interaction with HotSpotAnnotation should be here

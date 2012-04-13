@@ -26,6 +26,8 @@
 		F282AFE8152E430F00EC987C /* NetworkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F282AFE7152E430F00EC987C /* NetworkInfo.m */; };
 		F282AFF1152F9C3600EC987C /* NetworkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F282AFEF152F9C3600EC987C /* NetworkDetailViewController.m */; };
 		F282AFF2152F9C3600EC987C /* NetworkDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F282AFF0152F9C3600EC987C /* NetworkDetailViewController.xib */; };
+		F2F6C7C61538DAA900DF62B5 /* StuffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F6C7C41538DAA900DF62B5 /* StuffViewController.m */; };
+		F2F6C7C71538DAA900DF62B5 /* StuffViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F6C7C51538DAA900DF62B5 /* StuffViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,9 @@
 		F282AFEE152F9C3600EC987C /* NetworkDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkDetailViewController.h; sourceTree = "<group>"; };
 		F282AFEF152F9C3600EC987C /* NetworkDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkDetailViewController.m; sourceTree = "<group>"; };
 		F282AFF0152F9C3600EC987C /* NetworkDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetworkDetailViewController.xib; sourceTree = "<group>"; };
+		F2F6C7C31538DAA900DF62B5 /* StuffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StuffViewController.h; sourceTree = "<group>"; };
+		F2F6C7C41538DAA900DF62B5 /* StuffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StuffViewController.m; sourceTree = "<group>"; };
+		F2F6C7C51538DAA900DF62B5 /* StuffViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StuffViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +133,9 @@
 				F282AFEE152F9C3600EC987C /* NetworkDetailViewController.h */,
 				F282AFEF152F9C3600EC987C /* NetworkDetailViewController.m */,
 				F282AFF0152F9C3600EC987C /* NetworkDetailViewController.xib */,
+				F2F6C7C31538DAA900DF62B5 /* StuffViewController.h */,
+				F2F6C7C41538DAA900DF62B5 /* StuffViewController.m */,
+				F2F6C7C51538DAA900DF62B5 /* StuffViewController.xib */,
 				F2076B52152715610005A2BE /* Supporting Files */,
 			);
 			path = FindLocation;
@@ -200,6 +208,7 @@
 				F2076B7D152716DE0005A2BE /* ListTableViewController.xib in Resources */,
 				F2076B821527173A0005A2BE /* StartingPointViewController.xib in Resources */,
 				F282AFF2152F9C3600EC987C /* NetworkDetailViewController.xib in Resources */,
+				F2F6C7C71538DAA900DF62B5 /* StuffViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +227,7 @@
 				F2076B891527534B0005A2BE /* HotSpotAnnotation.m in Sources */,
 				F282AFE8152E430F00EC987C /* NetworkInfo.m in Sources */,
 				F282AFF1152F9C3600EC987C /* NetworkDetailViewController.m in Sources */,
+				F2F6C7C61538DAA900DF62B5 /* StuffViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
