@@ -15,6 +15,11 @@
 @synthesize signalStrength = _signalStrength;
 @synthesize isCurrent = _isCurrent;
 
++ (void)writeToDBifNew:(NetworkInfo *)network
+{
+    //check if new and put in db if yes
+}
+
 + (NetworkInfo *)newNetwork:(NSString *)name andStrength:(NSString *)strength andBssid:(NSString *)bssid andCurrent:(BOOL)current
 {
     //NSLog(@"%@ - %@", name, strength);
@@ -23,6 +28,7 @@
     [net setSignalStrength:[NSString stringWithFormat:@"%@", strength]];
     [net setNetworkBSSID:bssid];
     [net setIsCurrent:current];
+    [self writeToDBifNew:net];
     return net;
 }
 

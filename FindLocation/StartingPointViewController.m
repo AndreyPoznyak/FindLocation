@@ -101,12 +101,14 @@
     NSLog(@"Inside action of button viewList");
     ListTableViewController *listController = [[ListTableViewController alloc] initWithNibName:@"ListTableViewController" bundle:nil];
     [listController setListOfHotSpots:[self getListOfHotSpots]];
-    if([listController.listOfHotSpots count] == 0){//just stuff with modal view
+    if([listController.listOfHotSpots count] == 0)
+    {//just stuff with modal view instead of navigation controller
         StuffViewController *controller = [[StuffViewController alloc] initWithNibName:@"StuffViewController" bundle:nil];
         //UINavigationController *stuffNavController = [[UINavigationController alloc] initWithRootViewController:controller];
         //[self presentModalViewController:stuffNavController animated:YES];//define "cancel" button in stuffViewController
         [self.navigationController pushViewController:controller animated:YES];
-    }else{
+    }else
+    {
         [self.navigationController pushViewController:listController animated:YES];
     }
 }
@@ -149,6 +151,15 @@
     [super viewDidLoad];
     self.navigationItem.title = @"Menu";
     // Do any additional setup after loading the view from its nib.
+    //from Reachability:
+//    NetworkStatus currentStatus = [[Reachability reachabilityForInternetConnection] 
+//                                   currentReachabilityStatus];
+//    if(currentStatus == kReachableViaWWAN) // 3G
+//    {}
+//        else if(currentStatus == kReachableViaWifi) // ...wifi
+//        {}
+//            else if(currentStatus == kNotReachable) // no connection currently possible
+//            {}
 }
 
 - (void)viewDidUnload

@@ -96,6 +96,7 @@
     }
     
     // Configure the cell...
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     NetworkInfo *temp = [self.listOfHotSpots objectAtIndex:indexPath.row];
     if(!temp.isCurrent){
         cell.textLabel.text = temp.networkName;
