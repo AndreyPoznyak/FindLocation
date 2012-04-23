@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "NetworkInfo.h"
 #import "NetworkDetailViewController.h"
+#import "CoreDataTableViewController.h"
 
-@interface ListTableViewController : UITableViewController
+@interface ListTableViewController : CoreDataTableViewController
 
 @property (nonatomic, strong) NSArray *listOfHotSpots;
+@property (nonatomic, strong) UIManagedDocument *hotSpotsDatabase;
 
 @end

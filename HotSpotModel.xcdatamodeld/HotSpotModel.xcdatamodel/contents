@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="878" systemVersion="11D50d" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="HotSpot" representedClassName="HotSpot" syncable="YES">
+        <attribute name="bssid" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="latitude1" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="latitude2" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="latitude3" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude1" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude2" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude3" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strength1" optional="YES" attributeType="Integer 32" minValueString="0" maxValueString="100" defaultValueString="0" syncable="YES"/>
+        <attribute name="strength2" optional="YES" attributeType="Integer 32" minValueString="0" maxValueString="100" defaultValueString="0" syncable="YES"/>
+        <attribute name="strength3" optional="YES" attributeType="Integer 32" minValueString="0" maxValueString="100" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="HotSpot" positionX="-1791" positionY="-3033" width="128" height="240"/>
+    </elements>
+</model>

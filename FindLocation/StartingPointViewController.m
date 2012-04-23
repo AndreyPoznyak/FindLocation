@@ -87,8 +87,8 @@
        // [result appendString:[NSString stringWithFormat:@"%@ %@ %@\n", 
         if([currentBssid isEqualToString:[key objectForKey:@"BSSID"]]) ind = YES;
         [hotSpots addObject:[NetworkInfo newNetwork:[key objectForKey:@"SSID_STR"] 
-                                         andStrength:[key objectForKey:@"RSSI"]
-                                         andBssid:[key objectForKey:@"BSSID"]
+                                        andStrength:[key objectForKey:@"RSSI"]
+                                           andBssid:[key objectForKey:@"BSSID"]
                                          andCurrent:ind]];
     }
     //NSLog(result);
@@ -125,6 +125,11 @@
     MapViewController *mapController = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
     //mapController.annotations = [self mapAnnotations];            //uncomment then!!!
     [self.navigationController pushViewController:mapController animated:YES];
+}
+
+- (IBAction)viewHistory
+{
+    NSLog(@"Inside action of button viewHistory");
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

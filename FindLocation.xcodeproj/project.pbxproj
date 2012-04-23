@@ -28,6 +28,10 @@
 		F282AFF2152F9C3600EC987C /* NetworkDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F282AFF0152F9C3600EC987C /* NetworkDetailViewController.xib */; };
 		F2F6C7C61538DAA900DF62B5 /* StuffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F6C7C41538DAA900DF62B5 /* StuffViewController.m */; };
 		F2F6C7C71538DAA900DF62B5 /* StuffViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F6C7C51538DAA900DF62B5 /* StuffViewController.xib */; };
+		F2F6C7D21545E55700DF62B5 /* HotSpotModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F2F6C7D01545E55700DF62B5 /* HotSpotModel.xcdatamodeld */; };
+		F2F6C7D61545F26D00DF62B5 /* HotSpot.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F6C7D51545F26D00DF62B5 /* HotSpot.m */; };
+		F2F6C7D8154603D100DF62B5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F6C7D7154603D100DF62B5 /* CoreData.framework */; };
+		F2F6C7DB154605B900DF62B5 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F6C7DA154605B900DF62B5 /* CoreDataTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +67,12 @@
 		F2F6C7C31538DAA900DF62B5 /* StuffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StuffViewController.h; sourceTree = "<group>"; };
 		F2F6C7C41538DAA900DF62B5 /* StuffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StuffViewController.m; sourceTree = "<group>"; };
 		F2F6C7C51538DAA900DF62B5 /* StuffViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StuffViewController.xib; sourceTree = "<group>"; };
+		F2F6C7D11545E55700DF62B5 /* HotSpotModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HotSpotModel.xcdatamodel; sourceTree = "<group>"; };
+		F2F6C7D41545F26D00DF62B5 /* HotSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotSpot.h; sourceTree = "<group>"; };
+		F2F6C7D51545F26D00DF62B5 /* HotSpot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotSpot.m; sourceTree = "<group>"; };
+		F2F6C7D7154603D100DF62B5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F2F6C7D9154605B900DF62B5 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataTableViewController.h; path = FindLocation/CoreDataTableViewController.h; sourceTree = "<group>"; };
+		F2F6C7DA154605B900DF62B5 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataTableViewController.m; path = FindLocation/CoreDataTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2F6C7D8154603D100DF62B5 /* CoreData.framework in Frameworks */,
 				F2076B73152715AD0005A2BE /* MapKit.framework in Frameworks */,
 				F2076B71152715950005A2BE /* CoreLocation.framework in Frameworks */,
 				F2076B6F1527158E0005A2BE /* SystemConfiguration.framework in Frameworks */,
@@ -85,6 +96,11 @@
 		F2076B3C152715610005A2BE = {
 			isa = PBXGroup;
 			children = (
+				F2F6C7D41545F26D00DF62B5 /* HotSpot.h */,
+				F2F6C7D51545F26D00DF62B5 /* HotSpot.m */,
+				F2F6C7D9154605B900DF62B5 /* CoreDataTableViewController.h */,
+				F2F6C7DA154605B900DF62B5 /* CoreDataTableViewController.m */,
+				F2F6C7D01545E55700DF62B5 /* HotSpotModel.xcdatamodeld */,
 				F2076B51152715610005A2BE /* FindLocation */,
 				F2076B4A152715610005A2BE /* Frameworks */,
 				F2076B48152715610005A2BE /* Products */,
@@ -102,6 +118,7 @@
 		F2076B4A152715610005A2BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F2F6C7D7154603D100DF62B5 /* CoreData.framework */,
 				F2076B72152715AD0005A2BE /* MapKit.framework */,
 				F2076B70152715950005A2BE /* CoreLocation.framework */,
 				F2076B6E1527158E0005A2BE /* SystemConfiguration.framework */,
@@ -228,6 +245,9 @@
 				F282AFE8152E430F00EC987C /* NetworkInfo.m in Sources */,
 				F282AFF1152F9C3600EC987C /* NetworkDetailViewController.m in Sources */,
 				F2F6C7C61538DAA900DF62B5 /* StuffViewController.m in Sources */,
+				F2F6C7D21545E55700DF62B5 /* HotSpotModel.xcdatamodeld in Sources */,
+				F2F6C7D61545F26D00DF62B5 /* HotSpot.m in Sources */,
+				F2F6C7DB154605B900DF62B5 /* CoreDataTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +356,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F2F6C7D01545E55700DF62B5 /* HotSpotModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F2F6C7D11545E55700DF62B5 /* HotSpotModel.xcdatamodel */,
+			);
+			currentVersion = F2F6C7D11545E55700DF62B5 /* HotSpotModel.xcdatamodel */;
+			path = HotSpotModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F2076B3E152715610005A2BE /* Project object */;
 }

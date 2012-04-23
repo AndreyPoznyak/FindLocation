@@ -7,69 +7,79 @@
 //
 
 #import "ListTableViewController.h"
+#import "HotSpot.h"
 #include <dlfcn.h>
 
 
 @implementation ListTableViewController
 
 @synthesize listOfHotSpots = _listOfHotSpots;
+@synthesize hotSpotsDatabase = _hotSpotsDatabase;
 
-- (id)initWithStyle:(UITableViewStyle)style
+
+- (void)setupFetchedResultController
 {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
 }
 
-- (void)didReceiveMemoryWarning
+- (void)fetchDataIntoDocument:(UIManagedDocument*)document
 {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+    dispatch_queue_t fetchQ = dispatch_queue_create("Fetcher", NULL);
+    dispatch_async(fetchQ, ^{
+        [document.managedObjectContext performBlock:^{
+            for(NetworkInfo *network in self.listOfHotSpots) //!!!!!!!!!!!!!!!!!!!!continue here
+            {
+                HotSpot *newNetwork = [NSEntityDescription insertNewObjectForEntityForName:@"HotSpot" inManagedObjectContext:document];
+                newNetwork.name = network.networkName;
+                newNetwork.bssid = network.networkBSSID;
+            }
+        }];
+    });
+}
+
+- (void)useDocument
+{
+    if(![[NSFileManager defaultManager] fileExistsAtPath:[self.hotSpotsDatabase.fileURL path]])
+    {
+        [self.hotSpotsDatabase saveToURL:self.hotSpotsDatabase.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success){
+            [self setupFetchedResultController];
+            [self fetchDataIntoDocument:self.hotSpotsDatabase];
+        }];
+    } else if(self.hotSpotsDatabase.documentState == UIDocumentStateClosed)
+    {
+        [self.hotSpotsDatabase openWithCompletionHandler:^(BOOL success){
+            [self setupFetchedResultController];
+        }];
+    } else if(self.hotSpotsDatabase.documentState == UIDocumentStateNormal)
+    {
+        [self setupFetchedResultController];
+    }
+}
+
+- (void)setHotSpotsDatabase:(UIManagedDocument *)hotSpotsDatabase
+{
+    if(_hotSpotsDatabase != hotSpotsDatabase)
+    {
+        _hotSpotsDatabase = hotSpotsDatabase;
+        [self useDocument];
+    }
 }
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
+    [super viewWillAppear:animated];
     self.navigationItem.title = @"WiFi networks";
+    
+    NSURL *url = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
+    url = [url URLByAppendingPathComponent:@"Default Hot Spots Database"];
+    self.hotSpotsDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -79,7 +89,6 @@
 }
 
 #pragma mark - Table view data source
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.listOfHotSpots count];
