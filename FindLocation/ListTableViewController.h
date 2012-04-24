@@ -15,5 +15,6 @@
 
 @property (nonatomic, strong) NSArray *listOfHotSpots;
 @property (nonatomic, strong) UIManagedDocument *hotSpotsDatabase;
+@property BOOL currentListOrHistory;
 
 @end

@@ -100,6 +100,7 @@
 {
     NSLog(@"Inside action of button viewList");
     ListTableViewController *listController = [[ListTableViewController alloc] initWithNibName:@"ListTableViewController" bundle:nil];
+    [listController setCurrentListOrHistory:YES];
     [listController setListOfHotSpots:[self getListOfHotSpots]];
     if([listController.listOfHotSpots count] == 0)
     {//just stuff with modal view instead of navigation controller
@@ -113,7 +114,7 @@
     }
 }
 
-- (NSArray *)mapAnnotations                          //interaction with HotSpotAnnotation should be here
+- (NSArray *)mapAnnotations                          //interaction with the HotSpotAnnotation should be here
 {
     NSArray *temp = [NSArray arrayWithObjects:@"1", @"2", nil];//get the list here (of hotspots coordinates)
     return temp;
@@ -130,6 +131,9 @@
 - (IBAction)viewHistory
 {
     NSLog(@"Inside action of button viewHistory");
+    ListTableViewController *listController = [[ListTableViewController alloc] initWithNibName:@"ListTableViewController" bundle:nil];
+    [listController setCurrentListOrHistory:NO];
+    [self.navigationController pushViewController:listController animated:YES];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
