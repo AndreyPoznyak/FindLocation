@@ -14,7 +14,9 @@
 @implementation ListTableViewController//currentListOrHistory: YES - current list, NO - history
 
 @synthesize listOfHotSpots = _listOfHotSpots;
-@synthesize hotSpotsDatabase = _hotSpotsDatabase;
+@synthesize managedObjectContext = _managedObjectContext;
+//@synthesize hotSpotsDatabase = _hotSpotsDatabase;
+
 @synthesize currentListOrHistory = _currentListOrHistory;
 
 - (void)setupFetchedResultController
@@ -22,20 +24,20 @@
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"HotSpot"];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request 
-                                                                        managedObjectContext:self.hotSpotsDatabase.managedObjectContext
+                                                                        managedObjectContext:self.managedObjectContext
                                                                           sectionNameKeyPath:nil
                                                                                    cacheName:nil];
 }
 
-- (void)fetchDataIntoDocument:(UIManagedDocument*)document
+- (void)fetchDataIntoDocument:(NSManagedObjectContext*)context
 {
     NSLog(@"fetchDataIntoDocument function");
     dispatch_queue_t fetchQ = dispatch_queue_create("Fetcher", NULL);
     dispatch_async(fetchQ, ^{
-        [document.managedObjectContext performBlock:^{
+        [context performBlock:^{
             for(NetworkInfo *network in self.listOfHotSpots)
             {
-                [HotSpot hotSpotWithNetworkInfo:network inManagedObjectContext:document.managedObjectContext];
+                [HotSpot hotSpotWithNetworkInfo:network inManagedObjectContext:context];
             }
         }];
     });
@@ -44,7 +46,42 @@
 - (void)useDocument
 {
     NSLog(@"useDocument:");
-    if(![[NSFileManager defaultManager] fileExistsAtPath:[self.hotSpotsDatabase.fileURL path]])
+    //-------------------------------------------------------------------------
+    NSString *docsDir, *databasePath;
+    NSArray *dirPaths;
+    
+    // Get the documents directory
+    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    docsDir = [dirPaths objectAtIndex:0];
+    
+    // Build the path to the database file
+    databasePath = [[NSString alloc] initWithString: [docsDir stringByAppendingPathComponent: @"contacts.db"]];
+    
+    NSFileManager *filemgr = [NSFileManager defaultManager];
+    
+    if ([filemgr fileExistsAtPath: databasePath ] == NO)
+    {
+		const char *dbpath = [databasePath UTF8String];
+        
+//        if (sqlite3_open(dbpath, &contactDB) == SQLITE_OK)
+//        {
+//            char *errMsg;
+//            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS CONTACTS (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, ADDRESS TEXT, PHONE TEXT)";
+//            
+//            if (sqlite3_exec(contactDB, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK)
+//            {
+//                status.text = @"Failed to create table";
+//            }
+//            
+//            sqlite3_close(contactDB);
+//            
+//        } else {
+//            status.text = @"Failed to open/create database";
+//        }
+    }
+    //-----------------------------------------
+    if(![[NSFileManager defaultManager] fileExistsAtPath:[self.urlOfDatabase path]])
     {
         NSLog(@"case 1");
         [self.hotSpotsDatabase saveToURL:self.hotSpotsDatabase.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success){
@@ -81,11 +118,11 @@
 
 - (void)setHotSpotsDatabase:(UIManagedDocument *)hotSpotsDatabase
 {
-    //if(_hotSpotsDatabase != hotSpotsDatabase)
-    //{
+    if(_hotSpotsDatabase != hotSpotsDatabase)
+    {
         _hotSpotsDatabase = hotSpotsDatabase;
         [self useDocument];
-    //}
+    }
 }
 
 #pragma mark - View lifecycle
@@ -95,9 +132,12 @@
     [super viewWillAppear:animated];
     self.navigationItem.title = @"WiFi networks";
     
-    NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    url = [url URLByAppendingPathComponent:@"Default Hot Spots Database"];
-    self.hotSpotsDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
+    self.managedObjectContext = managedObjectContext;//???????
+    
+//    NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+//    url = [url URLByAppendingPathComponent:@"hotspots.sqlite"];
+//    self.urlOfDatabase = url;
+//    self.hotSpotsDatabase = [[UIManagedDocument alloc] initWithFileURL:url]                                       ;//only on ios 5
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

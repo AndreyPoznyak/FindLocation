@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreData/CoreData.h"
 
-@interface FindLocationAppDelegate : UIResponder <UIApplicationDelegate>
+@interface FindLocationAppDelegate : NSObject <UIApplicationDelegate> //UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
 @property (strong, nonatomic) UINavigationController *navigationController;
+
+@property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic, strong) NSURL *urlOfDatabase;
 
 @end

@@ -14,7 +14,8 @@
 @interface ListTableViewController : CoreDataTableViewController
 
 @property (nonatomic, strong) NSArray *listOfHotSpots;
-@property (nonatomic, strong) UIManagedDocument *hotSpotsDatabase;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+//@property (nonatomic, strong) UIManagedDocument *hotSpotsDatabase; //available only on iOS 5.0
 @property BOOL currentListOrHistory;
 
 @end
