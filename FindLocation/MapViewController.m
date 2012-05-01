@@ -17,7 +17,7 @@
 @synthesize currentLongitude = _currentLongitude;
 @synthesize annotations = _annotations;
 
-- (CLLocation*)locationManager
+- (CLLocationManager*)locationManager
 {
     if(_locationManager == nil)
     {

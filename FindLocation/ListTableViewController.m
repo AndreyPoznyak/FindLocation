@@ -94,9 +94,9 @@
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(self.currentListOrHistory == YES){
+    if(self.currentListOrHistory == YES) {
         return [self.listOfHotSpots count];
-    }else{
+    } else {
         return [super tableView:tableView numberOfRowsInSection:section];
     }
 }
@@ -117,7 +117,7 @@
         NetworkInfo *temp = [self.listOfHotSpots objectAtIndex:indexPath.row];
         if(!temp.isCurrent){
             cell.textLabel.text = temp.networkName;
-        }else{
+        } else {
             cell.textLabel.text = [temp.networkName stringByAppendingString:@" +"];
         }
     } else {
@@ -172,12 +172,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
+    NetworkDetailViewController *detailViewController = [[NetworkDetailViewController alloc] initWithNibName:@"NetworkDetailViewController"
+                                                                                                      bundle:nil];
     if(self.currentListOrHistory == YES)
     {
         NetworkInfo *temp = [self.listOfHotSpots objectAtIndex:indexPath.row];
-        NetworkDetailViewController *detailViewController = [[NetworkDetailViewController alloc] initWithNibName:@"NetworkDetailViewController"
-                                                                                                          bundle:nil];
         [detailViewController setCurrentNetwork:temp];
+        // Pass the selected object to the new view controller.
+        [self.navigationController pushViewController:detailViewController animated:YES];
+    } else {
+        HotSpot *hotSpot = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [detailViewController setCurrentHotSpot:hotSpot];
         // Pass the selected object to the new view controller.
         [self.navigationController pushViewController:detailViewController animated:YES];
     }
