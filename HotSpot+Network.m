@@ -13,7 +13,10 @@
 + (HotSpot*)hotSpotWithNetworkInfo:(NetworkInfo*)network inManagedObjectContext:(NSManagedObjectContext*)context
 {
     HotSpot *newNetwork = nil;
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"HotSpot"];
+    //NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"HotSpot"];        //only iOS 5.0
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"HotSpot" inManagedObjectContext:context];
+	[request setEntity:entity];
     request.predicate = [NSPredicate predicateWithFormat:@"bssid = %@", network.networkBSSID];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
@@ -27,6 +30,7 @@
     }
     else if([matches count] == 0)
     {
+        NSLog(@"Adding new network to DB here!");
         newNetwork = [NSEntityDescription insertNewObjectForEntityForName:@"HotSpot" inManagedObjectContext:context];
         newNetwork.name = network.networkName;
         newNetwork.bssid = network.networkBSSID;
