@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CoreData/CoreData.h"
+#import "CoreLocation/CoreLocation.h"
 
-@interface FindLocationAppDelegate : UIResponder <UIApplicationDelegate>
+@interface FindLocationAppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *navigationController;
@@ -18,5 +19,11 @@
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong) NSURL *urlOfDatabase;
+
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic) double currentLatitude;
+@property (nonatomic) double currentLongitude;
+
+- (void) refreshLocation;
 
 @end

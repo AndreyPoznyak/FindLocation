@@ -12,26 +12,12 @@
 @implementation MapViewController
 
 @synthesize mapView = _mapView;
-@synthesize locationManager = _locationManager;
-@synthesize currentLatitude = _currentLatitude;
-@synthesize currentLongitude = _currentLongitude;
 @synthesize annotations = _annotations;
-
-- (CLLocationManager*)locationManager
-{
-    if(_locationManager == nil)
-    {
-        _locationManager = [[CLLocationManager alloc] init];
-        _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-        _locationManager.delegate = self;
-        [_locationManager startUpdatingLocation];
-    }
-    return _locationManager;
-}
 
 - (void) initializeMapView
 {
-    CLLocationCoordinate2D mapCenter = CLLocationCoordinate2DMake(self.currentLatitude, self.currentLongitude);
+    FindLocationAppDelegate *appDelegate = (FindLocationAppDelegate*)[[UIApplication sharedApplication] delegate];
+    CLLocationCoordinate2D mapCenter = CLLocationCoordinate2DMake(appDelegate.currentLatitude, appDelegate.currentLongitude);
     MKCoordinateSpan mapSpan = MKCoordinateSpanMake(0.005, 0.010);
     MKCoordinateRegion mapRegion = MKCoordinateRegionMake(mapCenter, mapSpan);
     self.mapView.region = mapRegion;
@@ -59,16 +45,6 @@
     [self updateMapView];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation*)oldLocation
-{
-    NSLog(@"Core location claims to have a position");
-}
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-    NSLog(@"Core location can't get a fix");
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -91,11 +67,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    FindLocationAppDelegate *appDelegate = (FindLocationAppDelegate*)[[UIApplication sharedApplication] delegate];
+    [appDelegate refreshLocation];
     // Do any additional setup after loading the view from its nib.
     NSLog(@"Inside viewDidLoad");
-    CLLocation *curPosition = self.locationManager.location;
-    self.currentLatitude = curPosition.coordinate.latitude;
-    self.currentLongitude = curPosition.coordinate.longitude;
     self.navigationItem.title = @"Map";
 }
 
@@ -109,15 +84,14 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    NSLog(@"Shutting down core location");
-    [self.locationManager stopUpdatingLocation];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    FindLocationAppDelegate *appDelegate = (FindLocationAppDelegate*)[[UIApplication sharedApplication] delegate];
     HotSpotAnnotation *currentAnn = [[HotSpotAnnotation alloc] init];
-    [currentAnn setCustomLongitude:self.currentLongitude];
-    [currentAnn setCustomLatitude:self.currentLatitude];
+    [currentAnn setCustomLongitude:appDelegate.currentLongitude];
+    [currentAnn setCustomLatitude:appDelegate.currentLatitude];
     NSLog(@"Inside viewWillAppear");
     //NSLog([NSString stringWithFormat:@"Latitude: %f, longitude: %f", self.currentLatitude, self.currentLongitude]);
     [self.mapView addAnnotation:currentAnn];

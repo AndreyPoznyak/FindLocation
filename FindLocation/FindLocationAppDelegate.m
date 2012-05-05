@@ -17,6 +17,38 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize urlOfDatabase = _urlOfDatabase;
+@synthesize locationManager = _locationManager;
+@synthesize currentLatitude = _currentLatitude;
+@synthesize currentLongitude = _currentLongitude;
+
+- (CLLocationManager*)locationManager
+{
+    if(_locationManager == nil)
+    {
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+        _locationManager.delegate = self;
+        [_locationManager startUpdatingLocation];
+    }
+    return _locationManager;
+}
+
+- (void) refreshLocation
+{
+    CLLocation *curPosition = self.locationManager.location;
+    self.currentLatitude = curPosition.coordinate.latitude;
+    self.currentLongitude = curPosition.coordinate.longitude;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation*)oldLocation
+{
+    NSLog(@"Core location claims to have a position");
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"Core location can't get a fix");
+}
 
 //------------------------------------------------------from sample code----------
 - (void)saveContext
@@ -110,6 +142,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self refreshLocation];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 
@@ -136,6 +169,8 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     [self saveContext];
+    NSLog(@"Shutting down core location");
+    [self.locationManager stopUpdatingLocation];
     /*
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
@@ -159,6 +194,8 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     [self saveContext];
+    NSLog(@"Shutting down core location");
+    [self.locationManager stopUpdatingLocation];
     /*
      Called when the application is about to terminate.
      Save data if appropriate.
