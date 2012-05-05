@@ -21,8 +21,7 @@
 @synthesize bssidFiled = _bssidFiled;
 @synthesize signalField = _signalField;
 @synthesize strengthLabel = _strengthLabel;
-@synthesize fieldTwo = _fieldTwo;
-@synthesize fieldThree = _fieldThree;
+@synthesize textField = _textField;
 
 - (void)setCurrentNetwork:(NetworkInfo *)currentNetwork
 {
@@ -64,21 +63,20 @@
         self.navigationItem.title = self.nameField.text = self.currentNetwork.networkName;
         self.bssidFiled.text = self.currentNetwork.networkBSSID;
         self.signalField.text = self.currentNetwork.signalStrength;
-        self.fieldTwo.hidden = YES;
-        self.fieldThree.hidden = YES;
+        self.textField.hidden = YES;
     } else {
+        CGRect myFrame = self.signalField.frame;
+        myFrame.size.height = 100;
+        self.textField.frame = myFrame;
+        self.signalField.hidden = YES;
         self.strengthLabel.text = @"Locations:";
         self.bssidFiled.text = self.currentHotSpot.bssid;
         self.nameField.text = self.currentHotSpot.name;
-        self.signalField.text = [NSString stringWithFormat:@"%@;%@ (%@)", 
+        self.textField.text = [NSString stringWithFormat:@"%@;%@ (%@)\n%@;%@ (%@)\n%@;%@ (%@)", 
                                  [self.currentHotSpot.latitude1 stringValue], [self.currentHotSpot.longitude1 stringValue],
-                                 [self.currentHotSpot.strength1 stringValue]];
-        self.fieldTwo.text = [NSString stringWithFormat:@"%@;%@ (%@)", 
-                              [self.currentHotSpot.latitude2 stringValue], [self.currentHotSpot.longitude2 stringValue],
-                              [self.currentHotSpot.strength2 stringValue]];
-        self.fieldThree.text = [NSString stringWithFormat:@"%@;%@ (%@)", 
-                                [self.currentHotSpot.latitude3 stringValue], [self.currentHotSpot.longitude3 stringValue],
-                                [self.currentHotSpot.strength3 stringValue]];
+                                [self.currentHotSpot.strength1 stringValue], [self.currentHotSpot.latitude2 stringValue], [self.currentHotSpot.longitude2 stringValue], [self.currentHotSpot.strength2 stringValue],
+                               [self.currentHotSpot.latitude3 stringValue], [self.currentHotSpot.longitude3 stringValue],
+                               [self.currentHotSpot.strength3 stringValue]];
     }
 }
 
@@ -88,8 +86,7 @@
     [self setBssidFiled:nil];
     [self setSignalField:nil];
     [self setStrengthLabel:nil];
-    [self setFieldTwo:nil];
-    [self setFieldThree:nil];
+    [self setTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

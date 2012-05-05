@@ -52,12 +52,13 @@
                 newNetwork.strength2 = [ NSNumber numberWithInt:(-1)*([network.signalStrength intValue])];
             }
         } else if([newNetwork.longitude3 isEqualToNumber:[NSNumber numberWithDouble:0]]) {
-            if((newNetwork.latitude1 != latitude || newNetwork.longitude1 != longitude) &&
-               (newNetwork.latitude2 != latitude || newNetwork.longitude2 != longitude)) {
-                newNetwork.latitude3 = latitude;
-                newNetwork.longitude3 = longitude;
-                newNetwork.strength3 = [ NSNumber numberWithInt:(-1)*([network.signalStrength intValue])];
+            if(newNetwork.latitude1 != latitude || newNetwork.longitude1 != longitude) {
+                if(newNetwork.latitude2 != latitude || newNetwork.longitude2 != longitude) {
+                    newNetwork.latitude3 = latitude;
+                    newNetwork.longitude3 = longitude;
+                    newNetwork.strength3 = [ NSNumber numberWithInt:(-1)*([network.signalStrength intValue])];
                 //[self evaluateLocation];
+                }
             }
         }
     }

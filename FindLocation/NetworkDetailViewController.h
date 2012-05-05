@@ -16,8 +16,8 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UITextField *bssidFiled;
 @property (unsafe_unretained, nonatomic) IBOutlet UITextField *signalField;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *strengthLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UITextField *fieldTwo;
-@property (unsafe_unretained, nonatomic) IBOutlet UITextField *fieldThree;
+@property (unsafe_unretained, nonatomic) IBOutlet UITextView *textField;
+
 
 @property (nonatomic, strong) NetworkInfo *currentNetwork;
 @property (nonatomic, strong) HotSpot *currentHotSpot;
