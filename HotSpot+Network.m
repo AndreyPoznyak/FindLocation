@@ -46,14 +46,15 @@
     {
         newNetwork = [matches lastObject];
         if([newNetwork.latitude2 isEqualToNumber:[NSNumber numberWithDouble:0]]) {
-            if(newNetwork.latitude1 != latitude || newNetwork.longitude1 != longitude) {
+            if(![newNetwork.latitude1 isEqualToNumber:latitude] || ![newNetwork.longitude1 isEqualToNumber:longitude
+                 ]) {
                 newNetwork.latitude2 = latitude;
                 newNetwork.longitude2 = longitude;
                 newNetwork.strength2 = [ NSNumber numberWithInt:(-1)*([network.signalStrength intValue])];
             }
         } else if([newNetwork.longitude3 isEqualToNumber:[NSNumber numberWithDouble:0]]) {
-            if(newNetwork.latitude1 != latitude || newNetwork.longitude1 != longitude) {
-                if(newNetwork.latitude2 != latitude || newNetwork.longitude2 != longitude) {
+            if(![newNetwork.latitude1 isEqualToNumber:latitude] || ![newNetwork.longitude1 isEqualToNumber:longitude]) {
+                if(![newNetwork.latitude2 isEqualToNumber:latitude] || ![newNetwork.longitude2 isEqualToNumber:longitude]) {
                     newNetwork.latitude3 = latitude;
                     newNetwork.longitude3 = longitude;
                     newNetwork.strength3 = [ NSNumber numberWithInt:(-1)*([network.signalStrength intValue])];
