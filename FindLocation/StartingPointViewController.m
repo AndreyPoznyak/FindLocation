@@ -10,6 +10,7 @@
 #import "MapViewController.h"
 #import "ListTableViewController.h"
 #import "StuffViewController.h"
+#import "HotSpotAnnotation.h"
 
 @implementation StartingPointViewController
 
@@ -116,7 +117,29 @@
 
 - (NSArray *)mapAnnotations                          //interaction with the HotSpotAnnotation should be here
 {
-    NSArray *temp = [NSArray arrayWithObjects:@"1", @"2", nil];//get the list here (of hotspots coordinates)
+    NSMutableArray *temp = [[NSMutableArray alloc] init];
+    FindLocationAppDelegate *myApp = (FindLocationAppDelegate*)[[UIApplication sharedApplication] delegate];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"longitude > 0"];
+    [request setPredicate:predicate];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"HotSpot" inManagedObjectContext:myApp.managedObjectContext];
+    [request setEntity:entity];
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSArray *descriptors = [[NSArray alloc] initWithObjects:descriptor, nil];
+    [request setSortDescriptors:descriptors];
+    NSError *error = nil;
+    NSMutableArray *fetchResults = [[myApp.managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
+    //NSLog([NSString stringWithFormat:@"quantity of future annotations - %d", [fetchResults count]]);
+    for(HotSpot *hot in fetchResults)
+    {
+        if(![hot.latitude isEqualToNumber:[NSNumber numberWithDouble:0]])
+        {
+            HotSpotAnnotation *annotation = [[HotSpotAnnotation alloc] init];
+            [annotation setCustomLongitude:[hot.longitude doubleValue]];
+            [annotation setCustomLatitude:[hot.latitude doubleValue]];
+            [temp addObject:annotation];
+        }
+    }
     return temp;
 }
 
@@ -124,7 +147,7 @@
 {
     NSLog(@"Inside action of button viewMap");
     MapViewController *mapController = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
-    //mapController.annotations = [self mapAnnotations];            //uncomment then!!!
+    mapController.annotations = [self mapAnnotations];            //uncomment then!!!
     [self.navigationController pushViewController:mapController animated:YES];
 }
 

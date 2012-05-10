@@ -147,7 +147,8 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.managedObjectContext deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+        //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         NSLog(@"Like deletting here");
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
@@ -187,7 +188,6 @@
     } else {
         HotSpot *hotSpot = [self.fetchedResultsController objectAtIndexPath:indexPath];
         [detailViewController setCurrentHotSpot:hotSpot];
-        //if(![hotSpot.longitude3 isEqualToNumber:[NSNumber numberWithDouble:0]]) [HotSpot evaluateLocation:hotSpot];//delete it later!!!
         // Pass the selected object to the new view controller.
         [self.navigationController pushViewController:detailViewController animated:YES];
     }

@@ -11,18 +11,18 @@
 
 @implementation HotSpot (Network)
 
-+(int)strengthToLength:(int)strength
-{
-    int length = 0;
-    if(strength <= 40) length = strength/10;
-    else if(strength <=50) length = strength/10;
-    else if(strength <=60) length = strength/12;
-    else if(strength <=70) length = strength/8;
-    else if(strength <=80) length = strength/3;
-    else if(strength <=90) length = strength/1.3;
-    else if(strength > 90) length = strength;
-    return length;
-}
+//+(int)strengthToLength:(int)strength
+//{
+//    int length = 0;
+//    if(strength <= 40) length = strength/10;
+//    else if(strength <=50) length = strength/10;
+//    else if(strength <=60) length = strength/12;
+//    else if(strength <=70) length = strength/8;
+//    else if(strength <=80) length = strength/3;
+//    else if(strength <=90) length = strength/1.3;
+//    else if(strength > 90) length = strength;
+//    return length;
+//}
 
 + (HotSpot*)evaluateLocation:(HotSpot*)network
 {
@@ -33,24 +33,30 @@
     y2 = [network.longitude2 doubleValue];
     x3 = [network.latitude3 doubleValue];
     y3 = [network.longitude3 doubleValue];
-    int radius1, radius2, radius3;
-    radius1 = [self strengthToLength:[network.strength1 intValue]];
-    radius2 = [self strengthToLength:[network.strength2 intValue]];
-    radius3 = [self strengthToLength:[network.strength3 intValue]];
+    int s1 = [network.strength1 intValue];
+    int s2 = [network.strength2 intValue];
+    int s3 = [network.strength3 intValue];
+//    int radius1, radius2, radius3;
+//    radius1 = [self strengthToLength:[network.strength1 intValue]];
+//    radius2 = [self strengthToLength:[network.strength2 intValue]];
+//    radius3 = [self strengthToLength:[network.strength3 intValue]];
 //    double lengthAB, lengthBC;
 //    lengthAB = sqrt(pow((x2-x1), 2) + pow((y2-y1), 2));
 //    lengthBC = sqrt(pow((x3-x2), 2) + pow((y3-y2), 2));
+    int summOfStrengths = s1 + s2 + s3;
     double x = 0;     //desired latitude of hotspot
-    double y = 0;     //desired longitude of hotspot 
-    double a, b, c, d, e, f;
-    a = 2*(x2-x1);
-    b = 2*(y2-y1);
-    c = pow(radius1, 2) - pow(radius2, 2) - x1*x1 - y1*y1 + x2*x2 + y2*y2;
-    d = 2*(x3-x1);
-    e = 2*(y3-y1);
-    f = pow(radius1, 2) - pow(radius3, 2) - x1*x1 - y1*y1 + x3*x3 + y3*y3;
-    y = (c*d - f*a)/(b*d - e*a);
-    x = (c*e - f*b)/(a*e - d*b);
+    double y = 0;     //desired longitude of hotspot
+    x = (x1*s1 + x2*s2 + x3*s3)/summOfStrengths;
+    y = (y1*s1 + y2*s2 + y3*s3)/summOfStrengths;
+//    double a, b, c, d, e, f;
+//    a = 2*(x2-x1);
+//    b = 2*(y2-y1);
+//    c = pow(radius1, 2) - pow(radius2, 2) - x1*x1 - y1*y1 + x2*x2 + y2*y2;
+//    d = 2*(x3-x1);
+//    e = 2*(y3-y1);
+//    f = pow(radius1, 2) - pow(radius3, 2) - x1*x1 - y1*y1 + x3*x3 + y3*y3;
+//    y = (c*d - f*a)/(b*d - e*a);
+//    x = (c*e - f*b)/(a*e - d*b);
     network.latitude = [NSNumber numberWithDouble:x];
     network.longitude = [NSNumber numberWithDouble:y];
     return network;
@@ -106,8 +112,6 @@
                     newNetwork = [self evaluateLocation:newNetwork];
                 }
             }
-        } else {//temporary!!!!!
-            newNetwork = [self evaluateLocation:newNetwork];
         }
     }
     return newNetwork;
