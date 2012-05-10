@@ -20,6 +20,11 @@
 
 @synthesize currentListOrHistory = _currentListOrHistory;
 
+
+//- (IBAction)delete:(id)sender
+//{
+//}
+
 - (void)setupFetchedResultController
 {
     //NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"HotSpot"];   //only iOS 5.0
@@ -137,19 +142,18 @@
 }
 
 
-
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        NSLog(@"Like deletting here");
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-
 
 /*
 // Override to support rearranging the table view.
@@ -183,6 +187,7 @@
     } else {
         HotSpot *hotSpot = [self.fetchedResultsController objectAtIndexPath:indexPath];
         [detailViewController setCurrentHotSpot:hotSpot];
+        //if(![hotSpot.longitude3 isEqualToNumber:[NSNumber numberWithDouble:0]]) [HotSpot evaluateLocation:hotSpot];//delete it later!!!
         // Pass the selected object to the new view controller.
         [self.navigationController pushViewController:detailViewController animated:YES];
     }

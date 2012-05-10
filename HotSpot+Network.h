@@ -12,5 +12,6 @@
 @interface HotSpot (Network)
 
 + (HotSpot*)hotSpotWithNetworkInfo:(NetworkInfo*)network inManagedObjectContext:(NSManagedObjectContext*)context;
++ (HotSpot*)evaluateLocation:(HotSpot*)network;
 
 @end

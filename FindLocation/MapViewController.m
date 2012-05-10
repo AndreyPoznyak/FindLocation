@@ -8,6 +8,8 @@
 
 #import "MapViewController.h"
 #import "HotSpotAnnotation.h"
+#import "FindLocationAppDelegate.h"
+#import "HotSpot.h"
 
 @implementation MapViewController
 
@@ -89,12 +91,31 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     FindLocationAppDelegate *appDelegate = (FindLocationAppDelegate*)[[UIApplication sharedApplication] delegate];
+    FindLocationAppDelegate *myApp = (FindLocationAppDelegate*)[[UIApplication sharedApplication] delegate];
     HotSpotAnnotation *currentAnn = [[HotSpotAnnotation alloc] init];
-    [currentAnn setCustomLongitude:appDelegate.currentLongitude];
-    [currentAnn setCustomLatitude:appDelegate.currentLatitude];
-    NSLog(@"Inside viewWillAppear");
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"HotSpot" inManagedObjectContext:myApp.managedObjectContext];
+    [request setEntity:entity];
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSArray *descriptors = [[NSArray alloc] initWithObjects:descriptor, nil];
+    [request setSortDescriptors:descriptors];
+    NSError *error = nil;
+    NSMutableArray *fetchResults = [[appDelegate.managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
+    for(HotSpot *hot in fetchResults)
+    {
+        NSLog([hot.latitude stringValue]);
+        if(![hot.latitude isEqualToNumber:[NSNumber numberWithDouble:0]])
+        {
+            [currentAnn setCustomLongitude:[hot.longitude doubleValue]];
+            [currentAnn setCustomLatitude:[hot.latitude doubleValue]];
+            [self.mapView addAnnotation:currentAnn];
+            NSLog([NSString stringWithFormat:@"new annotation of %@ added to map!!!",hot.name]);
+        }
+    }
+//    [currentAnn setCustomLongitude:appDelegate.currentLongitude];
+//    [currentAnn setCustomLatitude:appDelegate.currentLatitude];
+//    [self.mapView addAnnotation:currentAnn];
     //NSLog([NSString stringWithFormat:@"Latitude: %f, longitude: %f", self.currentLatitude, self.currentLongitude]);
-    [self.mapView addAnnotation:currentAnn];
     [self initializeMapView];
     //[self.mapView addAnnotation([HotSpotAnnotation co])];//foreach
 }

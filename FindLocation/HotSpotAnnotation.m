@@ -12,16 +12,6 @@
 
 @synthesize customLatitude = _customLatitude, customLongitude = _customLongitude;
 
-- (void)setCustomLatitude:(double)customLatitude
-{
-    _customLatitude = customLatitude;
-}
-
-- (void)setCustomLongitude:(double)customLongitude
-{
-    _customLongitude = customLongitude;
-}
-
 - (NSString *)title
 {
     return @"Title of HotSpot";
@@ -40,9 +30,11 @@
     return coordinate;
 }
 
-+ (HotSpotAnnotation *)annotationForHotSpot:(NSDictionary *)hotSpot
++ (HotSpotAnnotation *)annotationForHotSpot:(HotSpot*)hotSpot
 {
     HotSpotAnnotation *annotation = [[HotSpotAnnotation alloc] init];
+    //self.customLongitude = [hotSpot.longitude doubleValue];
+    //self.customLatitude = [hotSpot.latitude doubleValue];
     return annotation;
 }
 
