@@ -10,6 +10,7 @@
 #import "FindLocationAppDelegate.h"
 #import "HotSpot+Network.h"
 #include <dlfcn.h>
+#include "StuffViewController.h"
 
 
 @implementation ListTableViewController           //currentListOrHistory: YES - current list, NO - history
@@ -107,6 +108,12 @@
                                          andCurrent:ind]];
     }
     //NSLog(result);
+    if([hotSpots count] == 0) {
+ //       [[NSNotificationCenter defaultCenter] postNotificationName:@"NoHotSpots" object:self];
+        StuffViewController *controller = [[StuffViewController alloc] initWithNibName:@"StuffViewController" bundle:nil];
+        UINavigationController *stuffNavController = [[UINavigationController alloc] initWithRootViewController:controller];
+        [self presentModalViewController:stuffNavController animated:YES];
+    }
     return hotSpots;
 }
 
@@ -289,7 +296,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog([NSString stringWithFormat:@"index # %d", indexPath.row]);
     // Navigation logic may go here. Create and push another view controller.
     NetworkDetailViewController *detailViewController = [[NetworkDetailViewController alloc] initWithNibName:@"NetworkDetailViewController"
                                                                                                       bundle:nil];

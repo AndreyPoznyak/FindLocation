@@ -14,22 +14,22 @@
 
 @implementation StartingPointViewController
 
+//- (void)pushEmtyView:(NSNotification*)notif
+//{
+//    NSLog(@"received notification about empty list");
+//    //{//just stuff with modal view instead of navigation controller
+//    StuffViewController *controller = [[StuffViewController alloc] initWithNibName:@"StuffViewController" bundle:nil];
+//    UINavigationController *stuffNavController = [[UINavigationController alloc] initWithRootViewController:controller];
+//    [self presentModalViewController:stuffNavController animated:YES];//define "cancel" button in stuffViewController
+//}
+
 - (IBAction)viewList
 {
     NSLog(@"Inside action of button viewList");
     ListTableViewController *listController = [[ListTableViewController alloc] initWithNibName:@"ListTableViewController" bundle:nil];
     [listController setCurrentListOrHistory:YES];
-    //[listController setListOfHotSpots:[self getListOfHotSpots]];
-    //if([listController.listOfHotSpots count] == 0)
-    //{//just stuff with modal view instead of navigation controller
-     //   StuffViewController *controller = [[StuffViewController alloc] initWithNibName:@"StuffViewController" bundle:nil];
-        //UINavigationController *stuffNavController = [[UINavigationController alloc] initWithRootViewController:controller];
-        //[self presentModalViewController:stuffNavController animated:YES];//define "cancel" button in stuffViewController
-    //    [self.navigationController pushViewController:controller animated:YES];
-    //}else
-    //{
-        [self.navigationController pushViewController:listController animated:YES];
-    //}
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushEmtyView:) name:@"NoHotSpots" object:nil];
+    [self.navigationController pushViewController:listController animated:YES];
 }
 
 - (NSArray *)mapAnnotations                          //interaction with the HotSpotAnnotation should be here
@@ -99,6 +99,7 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
