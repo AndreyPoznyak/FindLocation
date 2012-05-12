@@ -20,10 +20,95 @@
 
 @synthesize currentListOrHistory = _currentListOrHistory;
 
+- (void)setListOfHotSpots:(NSArray*)listOfHotSpots
+{
+    if(_listOfHotSpots != listOfHotSpots) {
+        _listOfHotSpots = listOfHotSpots;
+        if(self.tableView.window) [self.tableView reloadData];
+    }
+}
 
-//- (IBAction)delete:(id)sender
-//{
-//}
+- (NSArray *)getListOfHotSpots
+{
+    NSMutableArray *hotSpots = [NSMutableArray array];
+    NSString *currentBssid = [[NSString alloc] init];
+    //NSArray *hotSpots = [NSArray arrayWithObjects:@"1", @"2", nil];
+    
+    if(!TARGET_IPHONE_SIMULATOR)
+    {
+        CFArrayRef interfaces = CNCopySupportedInterfaces();
+        //NSLog(@"here it is %@", interfaces);
+        CFIndex count = CFArrayGetCount(interfaces);
+        
+        for (int i = 0; i < count; i++)
+        {
+            CFStringRef interface = CFArrayGetValueAtIndex(interfaces, i);
+            CFDictionaryRef netinfo = CNCopyCurrentNetworkInfo(interface);
+            if (netinfo && CFDictionaryContainsKey(netinfo, kCNNetworkInfoKeySSID))
+            {
+                //  NSString *ssid = (__bridge NSString *)CFDictionaryGetValue(netinfo, kCNNetworkInfoKeySSID);
+                currentBssid = (__bridge NSString *)CFDictionaryGetValue(netinfo, kCNNetworkInfoKeyBSSID);
+                //  NSString *ssiddata = (__bridge NSString *)CFDictionaryGetValue(netinfo, kCNNetworkInfoKeySSIDData);
+                // Compare with your needed ssid here
+                //   NSLog(@"\n------\n%@\n%@\n%@", ssid, currentBssid, ssiddata);
+            }
+            if (netinfo) CFRelease(netinfo);
+        }
+        CFRelease(interfaces);
+    }
+    
+    //---------------------------stuff with private library-----------------------------
+    NSMutableArray *networks;
+    void *libHandle;
+    void *airportHandle;
+    networks = [[NSMutableArray alloc] init];
+    int (*open)(void *);
+    int (*bind)(void *, NSString *);
+    int (*close)(void *);
+    //int (*scan)(void *, NSArray **, void *);
+    int (*scan)(void *, NSArray **, NSDictionary *);
+    //#if !(TARGET_IPHONE_SIMULATOR)
+    
+    // libHandle = dlopen("/System/Library/SystemConfiguration/WiFiManager.bundle/WiFiManager", RTLD_LAZY);
+    libHandle = dlopen("/System/Library/SystemConfiguration/IPConfiguration.bundle/IPConfiguration", RTLD_LAZY);
+    
+    char *error;
+    if (libHandle == NULL && (error = dlerror()) != NULL) {
+        NSLog(@"%s", error);
+        //exit(-1);
+    }
+    
+    open = dlsym(libHandle, "Apple80211Open");
+    bind = dlsym(libHandle, "Apple80211BindToInterface");
+    close = dlsym(libHandle, "Apple80211Close");
+    scan = dlsym(libHandle, "Apple80211Scan");
+    
+    open(&airportHandle);
+    bind(airportHandle, @"en0");
+    
+    NSDictionary *parameters = [[NSDictionary alloc] init];
+    //void *parameters;
+    //NSArray *scan_networks;
+    
+    //#if !(TARGET_IPHONE_SIMULATOR)
+    
+    scan(airportHandle, &networks, parameters);
+    
+    //NSMutableString *result = [[NSMutableString alloc] initWithString:@"Networks:\n"];
+    BOOL ind = NO;
+    
+    for (id key in networks) 
+    {
+        // [result appendString:[NSString stringWithFormat:@"%@ %@ %@\n", 
+        if([currentBssid isEqualToString:[key objectForKey:@"BSSID"]]) ind = YES;
+        [hotSpots addObject:[NetworkInfo newNetwork:[key objectForKey:@"SSID_STR"] 
+                                        andStrength:[key objectForKey:@"RSSI"]
+                                           andBssid:[key objectForKey:@"BSSID"]
+                                         andCurrent:ind]];
+    }
+    //NSLog(result);
+    return hotSpots;
+}
 
 - (void)setupFetchedResultController
 {
@@ -60,34 +145,59 @@
     if([[NSFileManager defaultManager] fileExistsAtPath:[appDelegate.urlOfDatabase path]])
     {
         NSLog(@"Trying to work with DB");
-            if(self.currentListOrHistory == YES) {
-                [self fetchDataIntoContext:self.managedObjectContext];
-            }
-            else {
+//            if(self.currentListOrHistory == YES) {
+//                [self fetchDataIntoContext:self.managedObjectContext];
+//            }
+//            else 
+            if(!self.currentListOrHistory) {
                 [self setupFetchedResultController];
             }
     } else {
-        NSLog(@"There is no database to write anything!!");
+        NSLog(@"There is no database!!");
     }
+}
+
+- (IBAction)refresh:(id)sender
+{
+    //NSLog(@"refresh was pressed");
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [spinner startAnimating];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    dispatch_queue_t refreshQ = dispatch_queue_create("Refresher", NULL);
+    dispatch_async(refreshQ, ^{
+        NSArray *newList = [self getListOfHotSpots];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.listOfHotSpots = newList;
+            [self fetchDataIntoContext:self.managedObjectContext];
+            self.navigationItem.rightBarButtonItem = sender;
+        });
+    });
+    dispatch_release(refreshQ);
 }
 
 #pragma mark - View lifecycle
 
-- (void)viewWillAppear:(BOOL)animated
+//- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidLoad
 {
-    [super viewWillAppear:animated];
+    [super viewDidLoad];
     self.navigationItem.title = @"WiFi networks";
-    
+    self.listOfHotSpots = [self getListOfHotSpots];
     FindLocationAppDelegate *appDelegate = (FindLocationAppDelegate*)[[UIApplication sharedApplication] delegate];
     self.managedObjectContext = appDelegate.managedObjectContext;
-    
-    [self useDocument];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-     if(!self.currentListOrHistory) self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if(self.currentListOrHistory) {
+        UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(refresh:)];
+        self.navigationItem.rightBarButtonItem = refreshButton;
+    }
+    else {
+        [self useDocument];
+        self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -149,7 +259,6 @@
         // Delete the row from the data source
         [self.managedObjectContext deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
         //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        NSLog(@"Like deletting here");
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -173,9 +282,14 @@
 */
 
 #pragma mark - Table view delegate
+//- (void)viewDidLoad
+//{
+//    NSLog(@"ViewDidLoad of list");
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog([NSString stringWithFormat:@"index # %d", indexPath.row]);
     // Navigation logic may go here. Create and push another view controller.
     NetworkDetailViewController *detailViewController = [[NetworkDetailViewController alloc] initWithNibName:@"NetworkDetailViewController"
                                                                                                       bundle:nil];

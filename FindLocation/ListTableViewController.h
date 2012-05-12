@@ -10,6 +10,9 @@
 #import "NetworkInfo.h"
 #import "NetworkDetailViewController.h"
 #import "CoreDataTableViewController.h"
+#import "SystemConfiguration/CaptiveNetwork.h"
+//#import "SystemConfiguration/SystemConfiguration.h"
+#include <dlfcn.h>
 
 @interface ListTableViewController : CoreDataTableViewController
 
