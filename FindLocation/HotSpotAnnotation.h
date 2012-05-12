@@ -12,9 +12,9 @@
 
 @interface HotSpotAnnotation : NSObject <MKAnnotation>
 
-+ (HotSpotAnnotation *)getAnnotationWithCoordinates:(double)longitude withLatitude:(double)latitude;
-@property (nonatomic) double customLatitude;
-@property (nonatomic) double customLongitude;
+//@property (nonatomic) double customLatitude;
+//@property (nonatomic) double customLongitude;
+@property (nonatomic, strong) HotSpot *hotSpot;
 + (HotSpotAnnotation *)annotationForHotSpot:(HotSpot*)hotSpot;
 
 @end

@@ -129,16 +129,11 @@
     [request setSortDescriptors:descriptors];
     NSError *error = nil;
     NSMutableArray *fetchResults = [[myApp.managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
-    //NSLog([NSString stringWithFormat:@"quantity of future annotations - %d", [fetchResults count]]);
+    //NSLog([NSString stringWithFormat:@"quantity of possible annotations - %d", [fetchResults count]]);
     for(HotSpot *hot in fetchResults)
     {
-        if(![hot.latitude isEqualToNumber:[NSNumber numberWithDouble:0]])
-        {
-            HotSpotAnnotation *annotation = [[HotSpotAnnotation alloc] init];
-            [annotation setCustomLongitude:[hot.longitude doubleValue]];
-            [annotation setCustomLatitude:[hot.latitude doubleValue]];
-            [temp addObject:annotation];
-        }
+        //NSLog(hot.name);
+        [temp addObject:[HotSpotAnnotation annotationForHotSpot:hot]];
     }
     return temp;
 }

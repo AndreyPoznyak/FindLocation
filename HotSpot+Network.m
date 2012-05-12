@@ -33,9 +33,9 @@
     y2 = [network.longitude2 doubleValue];
     x3 = [network.latitude3 doubleValue];
     y3 = [network.longitude3 doubleValue];
-    int s1 = [network.strength1 intValue];
-    int s2 = [network.strength2 intValue];
-    int s3 = [network.strength3 intValue];
+    int s1 = 100 - [network.strength1 intValue];
+    int s2 = 100 - [network.strength2 intValue];
+    int s3 = 100 - [network.strength3 intValue];
 //    int radius1, radius2, radius3;
 //    radius1 = [self strengthToLength:[network.strength1 intValue]];
 //    radius2 = [self strengthToLength:[network.strength2 intValue]];
@@ -112,6 +112,9 @@
                     newNetwork = [self evaluateLocation:newNetwork];
                 }
             }
+        } else
+        {
+            newNetwork = [self evaluateLocation:newNetwork];
         }
     }
     return newNetwork;
