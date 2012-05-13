@@ -189,7 +189,6 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"WiFi networks";
-    self.listOfHotSpots = [self getListOfHotSpots];
     FindLocationAppDelegate *appDelegate = (FindLocationAppDelegate*)[[UIApplication sharedApplication] delegate];
     self.managedObjectContext = appDelegate.managedObjectContext;
 
@@ -198,6 +197,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     if(self.currentListOrHistory) {
+        self.listOfHotSpots = [self getListOfHotSpots];
         UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(refresh:)];
         self.navigationItem.rightBarButtonItem = refreshButton;
     }

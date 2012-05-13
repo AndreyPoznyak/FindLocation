@@ -94,6 +94,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Menu";
+    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back.png"]];
 }
 
 - (void)viewDidUnload
