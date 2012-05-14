@@ -22,6 +22,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"03.png"]];
     // Do any additional setup after loading the view from its nib.
 }
 
