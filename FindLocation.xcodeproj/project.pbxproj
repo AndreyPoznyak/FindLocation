@@ -23,10 +23,10 @@
 		F2076B811527173A0005A2BE /* StartingPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2076B7F1527173A0005A2BE /* StartingPointViewController.m */; };
 		F2076B821527173A0005A2BE /* StartingPointViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2076B801527173A0005A2BE /* StartingPointViewController.xib */; };
 		F2076B891527534B0005A2BE /* HotSpotAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2076B881527534B0005A2BE /* HotSpotAnnotation.m */; };
-		F27AEF4D15613BFC000BF81E /* 01.png in Resources */ = {isa = PBXBuildFile; fileRef = F27AEF4A15613BFC000BF81E /* 01.png */; };
-		F27AEF4E15613BFC000BF81E /* 02.png in Resources */ = {isa = PBXBuildFile; fileRef = F27AEF4B15613BFC000BF81E /* 02.png */; };
-		F27AEF4F15613BFC000BF81E /* 03.png in Resources */ = {isa = PBXBuildFile; fileRef = F27AEF4C15613BFC000BF81E /* 03.png */; };
+		F27AEF4F15613BFC000BF81E /* stuff_back.png in Resources */ = {isa = PBXBuildFile; fileRef = F27AEF4C15613BFC000BF81E /* stuff_back.png */; };
 		F27AEF5115613CB7000BF81E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F27AEF5015613CB7000BF81E /* Default.png */; };
+		F27AEF531562FDAE000BF81E /* start_back.png in Resources */ = {isa = PBXBuildFile; fileRef = F27AEF521562FDAE000BF81E /* start_back.png */; };
+		F27AEF551562FEB2000BF81E /* 02.png in Resources */ = {isa = PBXBuildFile; fileRef = F27AEF541562FEB2000BF81E /* 02.png */; };
 		F27E11D61546AF8A002224ED /* HotSpot+Network.m in Sources */ = {isa = PBXBuildFile; fileRef = F27E11D51546AF8A002224ED /* HotSpot+Network.m */; };
 		F282AFE8152E430F00EC987C /* NetworkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F282AFE7152E430F00EC987C /* NetworkInfo.m */; };
 		F282AFF1152F9C3600EC987C /* NetworkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F282AFEF152F9C3600EC987C /* NetworkDetailViewController.m */; };
@@ -64,10 +64,10 @@
 		F2076B801527173A0005A2BE /* StartingPointViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartingPointViewController.xib; sourceTree = "<group>"; };
 		F2076B871527534B0005A2BE /* HotSpotAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotSpotAnnotation.h; sourceTree = "<group>"; };
 		F2076B881527534B0005A2BE /* HotSpotAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotSpotAnnotation.m; sourceTree = "<group>"; };
-		F27AEF4A15613BFC000BF81E /* 01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01.png; sourceTree = "<group>"; };
-		F27AEF4B15613BFC000BF81E /* 02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02.png; sourceTree = "<group>"; };
-		F27AEF4C15613BFC000BF81E /* 03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03.png; sourceTree = "<group>"; };
+		F27AEF4C15613BFC000BF81E /* stuff_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stuff_back.png; sourceTree = "<group>"; };
 		F27AEF5015613CB7000BF81E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		F27AEF521562FDAE000BF81E /* start_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start_back.png; sourceTree = "<group>"; };
+		F27AEF541562FEB2000BF81E /* 02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02.png; sourceTree = "<group>"; };
 		F27E11D41546AF8A002224ED /* HotSpot+Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HotSpot+Network.h"; path = "../HotSpot+Network.h"; sourceTree = "<group>"; };
 		F27E11D51546AF8A002224ED /* HotSpot+Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HotSpot+Network.m"; path = "../HotSpot+Network.m"; sourceTree = "<group>"; };
 		F282AFE6152E430F00EC987C /* NetworkInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkInfo.h; sourceTree = "<group>"; };
@@ -174,10 +174,10 @@
 		F2076B52152715610005A2BE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F27AEF521562FDAE000BF81E /* start_back.png */,
 				F27AEF5015613CB7000BF81E /* Default.png */,
-				F27AEF4A15613BFC000BF81E /* 01.png */,
-				F27AEF4B15613BFC000BF81E /* 02.png */,
-				F27AEF4C15613BFC000BF81E /* 03.png */,
+				F27AEF541562FEB2000BF81E /* 02.png */,
+				F27AEF4C15613BFC000BF81E /* stuff_back.png */,
 				F2076B53152715610005A2BE /* FindLocation-Info.plist */,
 				F2076B54152715610005A2BE /* InfoPlist.strings */,
 				F2076B57152715610005A2BE /* main.m */,
@@ -243,10 +243,10 @@
 				F2076B821527173A0005A2BE /* StartingPointViewController.xib in Resources */,
 				F282AFF2152F9C3600EC987C /* NetworkDetailViewController.xib in Resources */,
 				F2F6C7C71538DAA900DF62B5 /* StuffViewController.xib in Resources */,
-				F27AEF4D15613BFC000BF81E /* 01.png in Resources */,
-				F27AEF4E15613BFC000BF81E /* 02.png in Resources */,
-				F27AEF4F15613BFC000BF81E /* 03.png in Resources */,
+				F27AEF4F15613BFC000BF81E /* stuff_back.png in Resources */,
 				F27AEF5115613CB7000BF81E /* Default.png in Resources */,
+				F27AEF531562FDAE000BF81E /* start_back.png in Resources */,
+				F27AEF551562FEB2000BF81E /* 02.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

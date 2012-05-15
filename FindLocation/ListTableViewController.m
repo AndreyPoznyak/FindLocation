@@ -21,6 +21,9 @@
 
 @synthesize currentListOrHistory = _currentListOrHistory;
 
+StuffViewController *controller;//message about error
+UINavigationController *stuffNavController;
+
 - (void)setListOfHotSpots:(NSArray*)listOfHotSpots
 {
     if(_listOfHotSpots != listOfHotSpots) {
@@ -47,11 +50,7 @@
             CFDictionaryRef netinfo = CNCopyCurrentNetworkInfo(interface);
             if (netinfo && CFDictionaryContainsKey(netinfo, kCNNetworkInfoKeySSID))
             {
-                //  NSString *ssid = (__bridge NSString *)CFDictionaryGetValue(netinfo, kCNNetworkInfoKeySSID);
                 currentBssid = (__bridge NSString *)CFDictionaryGetValue(netinfo, kCNNetworkInfoKeyBSSID);
-                //  NSString *ssiddata = (__bridge NSString *)CFDictionaryGetValue(netinfo, kCNNetworkInfoKeySSIDData);
-                // Compare with your needed ssid here
-                //   NSLog(@"\n------\n%@\n%@\n%@", ssid, currentBssid, ssiddata);
             }
             if (netinfo) CFRelease(netinfo);
         }
@@ -76,6 +75,7 @@
     char *error;
     if (libHandle == NULL && (error = dlerror()) != NULL) {
         NSLog(@"%s", error);
+        NSLog(@"opa opa opa");
         //exit(-1);
     }
     
@@ -110,8 +110,6 @@
     //NSLog(result);
     if([hotSpots count] == 0) {
  //       [[NSNotificationCenter defaultCenter] postNotificationName:@"NoHotSpots" object:self];
-        StuffViewController *controller = [[StuffViewController alloc] initWithNibName:@"StuffViewController" bundle:nil];
-        UINavigationController *stuffNavController = [[UINavigationController alloc] initWithRootViewController:controller];
         [self presentModalViewController:stuffNavController animated:YES];
     }
     return hotSpots;
@@ -170,16 +168,18 @@
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [spinner startAnimating];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-    dispatch_queue_t refreshQ = dispatch_queue_create("Refresher", NULL);
-    dispatch_async(refreshQ, ^{
+    //dispatch_queue_t refreshQ = dispatch_queue_create("Refresher", NULL);
+    //dispatch_async(refreshQ, ^{
         NSArray *newList = [self getListOfHotSpots];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.listOfHotSpots = newList;
-            [self fetchDataIntoContext:self.managedObjectContext];
+    //    dispatch_async(dispatch_get_main_queue(), ^{
+            if([newList count] != 0) {
+                self.listOfHotSpots = newList;
+                [self fetchDataIntoContext:self.managedObjectContext];
+            }
             self.navigationItem.rightBarButtonItem = sender;
-        });
-    });
-    dispatch_release(refreshQ);
+     //   });
+    //});
+    //dispatch_release(refreshQ);
 }
 
 #pragma mark - View lifecycle
@@ -187,6 +187,8 @@
 //- (void)viewWillAppear:(BOOL)animated
 - (void)viewDidLoad
 {
+    controller = [[StuffViewController alloc] initWithNibName:@"StuffViewController" bundle:nil];
+    stuffNavController = [[UINavigationController alloc] initWithRootViewController:controller];
     [super viewDidLoad];
     self.navigationItem.title = @"WiFi networks";
     FindLocationAppDelegate *appDelegate = (FindLocationAppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -197,9 +199,9 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     if(self.currentListOrHistory) {
-        self.listOfHotSpots = [self getListOfHotSpots];
         UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(refresh:)];
         self.navigationItem.rightBarButtonItem = refreshButton;
+        self.listOfHotSpots = [self getListOfHotSpots];
     }
     else {
         [self useDocument];
