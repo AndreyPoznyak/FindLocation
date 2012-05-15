@@ -168,18 +168,19 @@ UINavigationController *stuffNavController;
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [spinner startAnimating];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-    //dispatch_queue_t refreshQ = dispatch_queue_create("Refresher", NULL);
-    //dispatch_async(refreshQ, ^{
-        NSArray *newList = [self getListOfHotSpots];
-    //    dispatch_async(dispatch_get_main_queue(), ^{
-            if([newList count] != 0) {
-                self.listOfHotSpots = newList;
+    dispatch_queue_t refreshQ = dispatch_queue_create("Refresher", NULL);
+    dispatch_async(refreshQ, ^{
+        //NSArray *newList = [self getListOfHotSpots];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //if([newList count] != 0) {
+                self.listOfHotSpots = [self getListOfHotSpots];//= newList;
+            if([self.listOfHotSpots count] != 0) {
                 [self fetchDataIntoContext:self.managedObjectContext];
             }
             self.navigationItem.rightBarButtonItem = sender;
-     //   });
-    //});
-    //dispatch_release(refreshQ);
+        });
+    });
+    dispatch_release(refreshQ);
 }
 
 #pragma mark - View lifecycle
@@ -232,21 +233,26 @@ UINavigationController *stuffNavController;
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if (self.currentListOrHistory == YES) {
         NetworkInfo *temp = [self.listOfHotSpots objectAtIndex:indexPath.row];
-        if(!temp.isCurrent){
+        //if(!temp.isCurrent) {
             cell.textLabel.text = temp.networkName;
-        } else {
-            cell.textLabel.text = [temp.networkName stringByAppendingString:@" +"];
-        }
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"Strength: %@", temp.signalStrength];
+        //} else {
+        //    cell.textLabel.text = [temp.networkName stringByAppendingString:@" +"];
+        //}
     } else {
         HotSpot *hotSpot = [self.fetchedResultsController objectAtIndexPath:indexPath];
         cell.textLabel.text = hotSpot.name;
+        int i = 1;
+        if(![hotSpot.strength3 isEqualToNumber:[NSNumber numberWithDouble:0]]) i = 3;
+        else if(![hotSpot.strength2 isEqualToNumber:[NSNumber numberWithDouble:0]]) i = 2;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"Number of detections: %d", i];
     }
     
     return cell;
