@@ -23,6 +23,7 @@
 
 StuffViewController *controller;//message about error
 UINavigationController *stuffNavController;
+BOOL nothingToShow = NO; //if list of hotspots is empty we need to push navigation controller back
 
 - (void)setListOfHotSpots:(NSArray*)listOfHotSpots
 {
@@ -34,30 +35,30 @@ UINavigationController *stuffNavController;
 
 - (NSArray *)getListOfHotSpots
 {
-    NSMutableArray *hotSpots = [NSMutableArray array];
-    NSString *currentBssid = [[NSString alloc] init];
-    //NSArray *hotSpots = [NSArray arrayWithObjects:@"1", @"2", nil];
-    
-    if(!TARGET_IPHONE_SIMULATOR)
-    {
-        CFArrayRef interfaces = CNCopySupportedInterfaces();
-        //NSLog(@"here it is %@", interfaces);
-        CFIndex count = CFArrayGetCount(interfaces);
-        
-        for (int i = 0; i < count; i++)
-        {
-            CFStringRef interface = CFArrayGetValueAtIndex(interfaces, i);
-            CFDictionaryRef netinfo = CNCopyCurrentNetworkInfo(interface);
-            if (netinfo && CFDictionaryContainsKey(netinfo, kCNNetworkInfoKeySSID))
-            {
-                currentBssid = (__bridge NSString *)CFDictionaryGetValue(netinfo, kCNNetworkInfoKeyBSSID);
-            }
-            if (netinfo) CFRelease(netinfo);
-        }
-        CFRelease(interfaces);
-    }
+//    NSString *currentBssid = [[NSString alloc] init];
+//    //NSArray *hotSpots = [NSArray arrayWithObjects:@"1", @"2", nil];
+//    
+//    if(!TARGET_IPHONE_SIMULATOR)
+//    {
+//        CFArrayRef interfaces = CNCopySupportedInterfaces();
+//        //NSLog(@"here it is %@", interfaces);
+//        CFIndex count = CFArrayGetCount(interfaces);
+//        
+//        for (int i = 0; i < count; i++)
+//        {
+//            CFStringRef interface = CFArrayGetValueAtIndex(interfaces, i);
+//            CFDictionaryRef netinfo = CNCopyCurrentNetworkInfo(interface);
+//            if (netinfo && CFDictionaryContainsKey(netinfo, kCNNetworkInfoKeySSID))
+//            {
+//                currentBssid = (__bridge NSString *)CFDictionaryGetValue(netinfo, kCNNetworkInfoKeyBSSID);
+//            }
+//            if (netinfo) CFRelease(netinfo);
+//        }
+//        CFRelease(interfaces);
+//    }
     
     //---------------------------stuff with private library-----------------------------
+    NSMutableArray *hotSpots = [NSMutableArray array];
     NSMutableArray *networks;
     void *libHandle;
     void *airportHandle;
@@ -79,38 +80,36 @@ UINavigationController *stuffNavController;
         //exit(-1);
     }
     
+    NSDictionary *parameters = [[NSDictionary alloc] init];
+    
     open = dlsym(libHandle, "Apple80211Open");
     bind = dlsym(libHandle, "Apple80211BindToInterface");
     close = dlsym(libHandle, "Apple80211Close");
     scan = dlsym(libHandle, "Apple80211Scan");
     
+    //#if !(TARGET_IPHONE_SIMULATOR)
     open(&airportHandle);
     bind(airportHandle, @"en0");
-    
-    NSDictionary *parameters = [[NSDictionary alloc] init];
-    //void *parameters;
-    //NSArray *scan_networks;
-    
-    //#if !(TARGET_IPHONE_SIMULATOR)
-    
     scan(airportHandle, &networks, parameters);
+    close(airportHandle);
     
-    //NSMutableString *result = [[NSMutableString alloc] initWithString:@"Networks:\n"];
+    NSLog([NSString stringWithFormat:@"quantity of scanned networks: %d", [networks count]]);
     BOOL ind = NO;
     
     for (id key in networks) 
     {
         // [result appendString:[NSString stringWithFormat:@"%@ %@ %@\n", 
-        if([currentBssid isEqualToString:[key objectForKey:@"BSSID"]]) ind = YES;
+//        if([currentBssid isEqualToString:[key objectForKey:@"BSSID"]]) ind = YES;
         [hotSpots addObject:[NetworkInfo newNetwork:[key objectForKey:@"SSID_STR"] 
                                         andStrength:[key objectForKey:@"RSSI"]
                                            andBssid:[key objectForKey:@"BSSID"]
                                          andCurrent:ind]];
     }
-    //NSLog(result);
+    
     if([hotSpots count] == 0) {
  //       [[NSNotificationCenter defaultCenter] postNotificationName:@"NoHotSpots" object:self];
         [self presentModalViewController:stuffNavController animated:YES];
+        nothingToShow = YES;
     }
     return hotSpots;
 }
@@ -189,6 +188,7 @@ UINavigationController *stuffNavController;
 - (void)viewDidLoad
 {
     controller = [[StuffViewController alloc] initWithNibName:@"StuffViewController" bundle:nil];
+    [controller setIsMessageAboutError:YES];
     stuffNavController = [[UINavigationController alloc] initWithRootViewController:controller];
     [super viewDidLoad];
     self.navigationItem.title = @"WiFi networks";
@@ -207,6 +207,15 @@ UINavigationController *stuffNavController;
     else {
         [self useDocument];
         self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if(nothingToShow) {
+        [self.navigationController popViewControllerAnimated:YES];
+        nothingToShow = NO;
     }
 }
 

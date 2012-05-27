@@ -55,6 +55,13 @@
     return temp;
 }
 
+- (IBAction)viewStats
+{
+    StuffViewController *stuffController = [[StuffViewController alloc] initWithNibName:@"StuffViewController" bundle:nil];
+    [stuffController setIsMessageAboutError:NO];
+    [self.navigationController pushViewController:stuffController animated:YES];
+}
+
 - (IBAction)viewMap
 {
     NSLog(@"Inside action of button viewMap");

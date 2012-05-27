@@ -11,5 +11,6 @@
 @interface StuffViewController : UIViewController
 
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *mainLabel;
+@property (nonatomic) BOOL isMessageAboutError;
 
 @end
