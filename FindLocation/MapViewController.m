@@ -22,6 +22,7 @@
     MKCoordinateRegion mapRegion = MKCoordinateRegionMake(mapCenter, mapSpan);
     self.mapView.region = mapRegion;
     self.mapView.mapType = MKMapTypeStandard;
+    self.mapView.showsUserLocation = YES;
 }
 
 - (void)updateMapView
