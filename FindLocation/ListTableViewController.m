@@ -93,7 +93,7 @@ BOOL nothingToShow = NO; //if list of hotspots is empty we need to push navigati
     scan(airportHandle, &networks, parameters);
     close(airportHandle);
     
-    NSLog([NSString stringWithFormat:@"quantity of scanned networks: %d", [networks count]]);
+    //NSLog([NSString stringWithFormat:@"quantity of scanned networks: %d", [networks count]]);
     BOOL ind = NO;
     
     for (id key in networks) 

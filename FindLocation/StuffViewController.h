@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+/*!Class for ViewController, this is to display text, e.g. error or stats*/
 @interface StuffViewController : UIViewController
 
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *mainLabel;

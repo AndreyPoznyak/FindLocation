@@ -27,14 +27,14 @@
 		F27AEF5115613CB7000BF81E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F27AEF5015613CB7000BF81E /* Default.png */; };
 		F27AEF531562FDAE000BF81E /* start_back.png in Resources */ = {isa = PBXBuildFile; fileRef = F27AEF521562FDAE000BF81E /* start_back.png */; };
 		F27AEF551562FEB2000BF81E /* 02.png in Resources */ = {isa = PBXBuildFile; fileRef = F27AEF541562FEB2000BF81E /* 02.png */; };
-		F27E11D61546AF8A002224ED /* HotSpot+Network.m in Sources */ = {isa = PBXBuildFile; fileRef = F27E11D51546AF8A002224ED /* HotSpot+Network.m */; };
+		F27AEF5A157740AB000BF81E /* HotSpot.m in Sources */ = {isa = PBXBuildFile; fileRef = F27AEF57157740A9000BF81E /* HotSpot.m */; };
+		F27AEF5B157740AB000BF81E /* HotSpot+Network.m in Sources */ = {isa = PBXBuildFile; fileRef = F27AEF59157740AB000BF81E /* HotSpot+Network.m */; };
+		F27AEF5E157740D9000BF81E /* HotSpotModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F27AEF5C157740D9000BF81E /* HotSpotModel.xcdatamodeld */; };
 		F282AFE8152E430F00EC987C /* NetworkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F282AFE7152E430F00EC987C /* NetworkInfo.m */; };
 		F282AFF1152F9C3600EC987C /* NetworkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F282AFEF152F9C3600EC987C /* NetworkDetailViewController.m */; };
 		F282AFF2152F9C3600EC987C /* NetworkDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F282AFF0152F9C3600EC987C /* NetworkDetailViewController.xib */; };
 		F2F6C7C61538DAA900DF62B5 /* StuffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F6C7C41538DAA900DF62B5 /* StuffViewController.m */; };
 		F2F6C7C71538DAA900DF62B5 /* StuffViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F6C7C51538DAA900DF62B5 /* StuffViewController.xib */; };
-		F2F6C7D21545E55700DF62B5 /* HotSpotModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F2F6C7D01545E55700DF62B5 /* HotSpotModel.xcdatamodeld */; };
-		F2F6C7D61545F26D00DF62B5 /* HotSpot.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F6C7D51545F26D00DF62B5 /* HotSpot.m */; };
 		F2F6C7D8154603D100DF62B5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F6C7D7154603D100DF62B5 /* CoreData.framework */; };
 		F2F6C7DB154605B900DF62B5 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F6C7DA154605B900DF62B5 /* CoreDataTableViewController.m */; };
 /* End PBXBuildFile section */
@@ -68,8 +68,11 @@
 		F27AEF5015613CB7000BF81E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		F27AEF521562FDAE000BF81E /* start_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start_back.png; sourceTree = "<group>"; };
 		F27AEF541562FEB2000BF81E /* 02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02.png; sourceTree = "<group>"; };
-		F27E11D41546AF8A002224ED /* HotSpot+Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HotSpot+Network.h"; path = "../HotSpot+Network.h"; sourceTree = "<group>"; };
-		F27E11D51546AF8A002224ED /* HotSpot+Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "HotSpot+Network.m"; path = "../HotSpot+Network.m"; sourceTree = "<group>"; };
+		F27AEF56157740A9000BF81E /* HotSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotSpot.h; sourceTree = "<group>"; };
+		F27AEF57157740A9000BF81E /* HotSpot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotSpot.m; sourceTree = "<group>"; };
+		F27AEF58157740AA000BF81E /* HotSpot+Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HotSpot+Network.h"; sourceTree = "<group>"; };
+		F27AEF59157740AB000BF81E /* HotSpot+Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HotSpot+Network.m"; sourceTree = "<group>"; };
+		F27AEF5D157740D9000BF81E /* HotSpotModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HotSpotModel.xcdatamodel; sourceTree = "<group>"; };
 		F282AFE6152E430F00EC987C /* NetworkInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkInfo.h; sourceTree = "<group>"; };
 		F282AFE7152E430F00EC987C /* NetworkInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkInfo.m; sourceTree = "<group>"; };
 		F282AFEE152F9C3600EC987C /* NetworkDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkDetailViewController.h; sourceTree = "<group>"; };
@@ -78,9 +81,6 @@
 		F2F6C7C31538DAA900DF62B5 /* StuffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StuffViewController.h; sourceTree = "<group>"; };
 		F2F6C7C41538DAA900DF62B5 /* StuffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StuffViewController.m; sourceTree = "<group>"; };
 		F2F6C7C51538DAA900DF62B5 /* StuffViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StuffViewController.xib; sourceTree = "<group>"; };
-		F2F6C7D11545E55700DF62B5 /* HotSpotModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HotSpotModel.xcdatamodel; sourceTree = "<group>"; };
-		F2F6C7D41545F26D00DF62B5 /* HotSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HotSpot.h; path = ../HotSpot.h; sourceTree = "<group>"; };
-		F2F6C7D51545F26D00DF62B5 /* HotSpot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotSpot.m; path = ../HotSpot.m; sourceTree = "<group>"; };
 		F2F6C7D7154603D100DF62B5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F2F6C7D9154605B900DF62B5 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
 		F2F6C7DA154605B900DF62B5 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
@@ -138,15 +138,15 @@
 		F2076B51152715610005A2BE /* FindLocation */ = {
 			isa = PBXGroup;
 			children = (
-				F27E11D41546AF8A002224ED /* HotSpot+Network.h */,
-				F27E11D51546AF8A002224ED /* HotSpot+Network.m */,
-				F2F6C7D41545F26D00DF62B5 /* HotSpot.h */,
-				F2F6C7D51545F26D00DF62B5 /* HotSpot.m */,
+				F27AEF56157740A9000BF81E /* HotSpot.h */,
+				F27AEF57157740A9000BF81E /* HotSpot.m */,
+				F27AEF58157740AA000BF81E /* HotSpot+Network.h */,
+				F27AEF59157740AB000BF81E /* HotSpot+Network.m */,
 				F2F6C7D9154605B900DF62B5 /* CoreDataTableViewController.h */,
 				F2F6C7DA154605B900DF62B5 /* CoreDataTableViewController.m */,
-				F2F6C7D01545E55700DF62B5 /* HotSpotModel.xcdatamodeld */,
 				F2076B871527534B0005A2BE /* HotSpotAnnotation.h */,
 				F2076B881527534B0005A2BE /* HotSpotAnnotation.m */,
+				F27AEF5C157740D9000BF81E /* HotSpotModel.xcdatamodeld */,
 				F2076B7E1527173A0005A2BE /* StartingPointViewController.h */,
 				F2076B7F1527173A0005A2BE /* StartingPointViewController.m */,
 				F2076B801527173A0005A2BE /* StartingPointViewController.xib */,
@@ -266,10 +266,10 @@
 				F282AFE8152E430F00EC987C /* NetworkInfo.m in Sources */,
 				F282AFF1152F9C3600EC987C /* NetworkDetailViewController.m in Sources */,
 				F2F6C7C61538DAA900DF62B5 /* StuffViewController.m in Sources */,
-				F2F6C7D21545E55700DF62B5 /* HotSpotModel.xcdatamodeld in Sources */,
-				F2F6C7D61545F26D00DF62B5 /* HotSpot.m in Sources */,
 				F2F6C7DB154605B900DF62B5 /* CoreDataTableViewController.m in Sources */,
-				F27E11D61546AF8A002224ED /* HotSpot+Network.m in Sources */,
+				F27AEF5A157740AB000BF81E /* HotSpot.m in Sources */,
+				F27AEF5B157740AB000BF81E /* HotSpot+Network.m in Sources */,
+				F27AEF5E157740D9000BF81E /* HotSpotModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,14 +380,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		F2F6C7D01545E55700DF62B5 /* HotSpotModel.xcdatamodeld */ = {
+		F27AEF5C157740D9000BF81E /* HotSpotModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				F2F6C7D11545E55700DF62B5 /* HotSpotModel.xcdatamodel */,
+				F27AEF5D157740D9000BF81E /* HotSpotModel.xcdatamodel */,
 			);
-			currentVersion = F2F6C7D11545E55700DF62B5 /* HotSpotModel.xcdatamodel */;
-			name = HotSpotModel.xcdatamodeld;
-			path = ../HotSpotModel.xcdatamodeld;
+			currentVersion = F27AEF5D157740D9000BF81E /* HotSpotModel.xcdatamodel */;
+			path = HotSpotModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

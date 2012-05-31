@@ -10,9 +10,13 @@
 #import "MapKit/MapKit.h"
 #import "FindLocationAppDelegate.h"
 
+//!MapViewController class
+/*!Provides ViewController for map*/
 @interface MapViewController : UIViewController
 
+/*!Property of array which contains annotations to show on map*/
 @property (nonatomic, strong) NSArray *annotations;
+/*!Outlet to handle mapView*/
 @property (unsafe_unretained, nonatomic) IBOutlet MKMapView *mapView;
 
 @end

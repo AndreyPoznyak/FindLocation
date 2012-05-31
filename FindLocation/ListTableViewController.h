@@ -14,11 +14,16 @@
 //#import "SystemConfiguration/SystemConfiguration.h"
 #include <dlfcn.h>
 
+//!Class ListTableViewController
+/*!Class for handling listTable of hotspots*/
 @interface ListTableViewController : CoreDataTableViewController
 
+/*!This array contains list of hotspots*/
 @property (nonatomic, strong) NSArray *listOfHotSpots;
+/*!context for out data storage*/
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 //@property (nonatomic, strong) UIManagedDocument *hotSpotsDatabase; //available only on iOS 5.0
+/*!This property of bool indicates kind of shown list, whether it's history or currently available hotspots*/
 @property BOOL currentListOrHistory;
 
 @end

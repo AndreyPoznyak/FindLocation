@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "NetworkInfo.h"
 
-
+//!Class StartingPointViewController
+/*!ViewController class for menu*/
 @interface StartingPointViewController : UIViewController
 
 @end

@@ -10,6 +10,7 @@
 #import "NetworkInfo.h"
 #import "HotSpot.h"
 
+/*!Class for ViewController, to represent info about netwotk in details*/
 @interface NetworkDetailViewController : UIViewController
 
 @property (unsafe_unretained, nonatomic) IBOutlet UITextField *nameField;
@@ -17,7 +18,6 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UITextField *signalField;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *strengthLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet UITextView *textField;
-
 
 @property (nonatomic, strong) NetworkInfo *currentNetwork;
 @property (nonatomic, strong) HotSpot *currentHotSpot;

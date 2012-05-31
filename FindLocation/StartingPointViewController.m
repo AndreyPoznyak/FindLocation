@@ -23,6 +23,7 @@
 //    [self presentModalViewController:stuffNavController animated:YES];//define "cancel" button in stuffViewController
 //}
 
+/*!Action of button, pushes list of currently available networks*/
 - (IBAction)viewList
 {
     NSLog(@"Inside action of button viewList");
@@ -32,6 +33,7 @@
     [self.navigationController pushViewController:listController animated:YES];
 }
 
+/*!method returns array of annotations whick we have to put on map*/
 - (NSArray *)mapAnnotations                          //interaction with the HotSpotAnnotation should be here
 {
     NSMutableArray *temp = [[NSMutableArray alloc] init];
@@ -55,6 +57,7 @@
     return temp;
 }
 
+/*!action of button, shows view with stats*/
 - (IBAction)viewStats
 {
     StuffViewController *stuffController = [[StuffViewController alloc] initWithNibName:@"StuffViewController" bundle:nil];
@@ -62,6 +65,7 @@
     [self.navigationController pushViewController:stuffController animated:YES];
 }
 
+/*!action of button, shows mapView with annotations of hotspots*/
 - (IBAction)viewMap
 {
     NSLog(@"Inside action of button viewMap");
@@ -70,6 +74,7 @@
     [self.navigationController pushViewController:mapController animated:YES];
 }
 
+/*!action of button, shows list with history of hotspots*/
 - (IBAction)viewHistory
 {
     NSLog(@"Inside action of button viewHistory");
