@@ -10,7 +10,8 @@
 #import <CoreData/CoreData.h>
 
 //!Class HotSpot
-/*!This class was automaticaly generated from DataBase model and corresponds to table*/
+/*!This class was automaticaly generated from DataBase model and corresponds to table.
+Works together with HotSpot+Network category*/
 @interface HotSpot : NSManagedObject
 
 @property (nonatomic, retain) NSString * name;

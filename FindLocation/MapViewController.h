@@ -10,7 +10,7 @@
 #import "MapKit/MapKit.h"
 #import "FindLocationAppDelegate.h"
 
-//!MapViewController class
+//!Class MapViewController
 /*!Provides ViewController for map*/
 @interface MapViewController : UIViewController
 

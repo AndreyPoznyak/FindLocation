@@ -10,7 +10,8 @@
 #import "CoreData/CoreData.h"
 #import "CoreLocation/CoreLocation.h"
 
-/*!main class of application, its properties and methods are avievable in any part of code*/
+//!Class FindLocationAppDelegate
+/*!Main class of application, its properties and methods are reachable from any part of code*/
 @interface FindLocationAppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

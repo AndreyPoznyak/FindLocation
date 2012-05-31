@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+//!Class NetworkInfo
 /*!Class to store info about currently available networks*/
 @interface NetworkInfo : NSObject
 

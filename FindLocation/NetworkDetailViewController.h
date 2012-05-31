@@ -10,6 +10,7 @@
 #import "NetworkInfo.h"
 #import "HotSpot.h"
 
+//!Class NetworkDetailViewController
 /*!Class for ViewController, to represent info about netwotk in details*/
 @interface NetworkDetailViewController : UIViewController
 

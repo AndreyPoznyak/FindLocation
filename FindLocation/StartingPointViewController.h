@@ -10,7 +10,7 @@
 #import "NetworkInfo.h"
 
 //!Class StartingPointViewController
-/*!ViewController class for menu*/
+/*!ViewController class for menu. Contains only private members*/
 @interface StartingPointViewController : UIViewController
 
 @end

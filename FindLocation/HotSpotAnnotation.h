@@ -10,7 +10,7 @@
 #import "MapKit/MapKit.h"
 #import "HotSpot.h"
 
-//!class HotSpotAnnotation
+//!Class HotSpotAnnotation
 /*!This class provides mechanism to put annotation on map*/
 @interface HotSpotAnnotation : NSObject <MKAnnotation>
 

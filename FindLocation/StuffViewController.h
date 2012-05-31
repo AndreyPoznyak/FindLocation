@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+//!Class StuffViewController
 /*!Class for ViewController, this is to display text, e.g. error or stats*/
 @interface StuffViewController : UIViewController
 
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *mainLabel;
+/*!in order to determine which message to set*/
 @property (nonatomic) BOOL isMessageAboutError;
 
 @end
