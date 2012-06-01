@@ -33,7 +33,7 @@
     return _locationManager;
 }
 
-- (void) refreshLocation
+- (void)refreshLocation
 {
     CLLocation *curPosition = self.locationManager.location;
     self.currentLatitude = curPosition.coordinate.latitude;

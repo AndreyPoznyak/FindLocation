@@ -59,14 +59,12 @@ BOOL nothingToShow = NO; //if list of hotspots is empty we need to push navigati
     
     //---------------------------stuff with private library-----------------------------
     NSMutableArray *hotSpots = [NSMutableArray array];
-    NSMutableArray *networks;
+    NSMutableArray *networks = [[NSMutableArray alloc] init];;
     void *libHandle;
     void *airportHandle;
-    networks = [[NSMutableArray alloc] init];
     int (*open)(void *);
     int (*bind)(void *, NSString *);
     int (*close)(void *);
-    //int (*scan)(void *, NSArray **, void *);
     int (*scan)(void *, NSArray **, NSDictionary *);
     //#if !(TARGET_IPHONE_SIMULATOR)
     
@@ -76,7 +74,6 @@ BOOL nothingToShow = NO; //if list of hotspots is empty we need to push navigati
     char *error;
     if (libHandle == NULL && (error = dlerror()) != NULL) {
         NSLog(@"%s", error);
-        NSLog(@"opa opa opa");
         //exit(-1);
     }
     
@@ -98,7 +95,6 @@ BOOL nothingToShow = NO; //if list of hotspots is empty we need to push navigati
     
     for (id key in networks) 
     {
-        // [result appendString:[NSString stringWithFormat:@"%@ %@ %@\n", 
 //        if([currentBssid isEqualToString:[key objectForKey:@"BSSID"]]) ind = YES;
         [hotSpots addObject:[NetworkInfo newNetwork:[key objectForKey:@"SSID_STR"] 
                                         andStrength:[key objectForKey:@"RSSI"]
@@ -172,7 +168,7 @@ BOOL nothingToShow = NO; //if list of hotspots is empty we need to push navigati
         //NSArray *newList = [self getListOfHotSpots];
         dispatch_async(dispatch_get_main_queue(), ^{
             //if([newList count] != 0) {
-                self.listOfHotSpots = [self getListOfHotSpots];//= newList;
+                self.listOfHotSpots = [self getListOfHotSpots];
             if([self.listOfHotSpots count] != 0) {
                 [self fetchDataIntoContext:self.managedObjectContext];
             }
@@ -184,7 +180,6 @@ BOOL nothingToShow = NO; //if list of hotspots is empty we need to push navigati
 
 #pragma mark - View lifecycle
 
-//- (void)viewWillAppear:(BOOL)animated
 - (void)viewDidLoad
 {
     controller = [[StuffViewController alloc] initWithNibName:@"StuffViewController" bundle:nil];
