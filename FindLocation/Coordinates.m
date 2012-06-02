@@ -1,21 +1,21 @@
 //
-//  HotSpot.m
+//  Coordinates.m
 //  FindLocation
 //
 //  Created by Andrey Poznyak on 6/2/12.
 //  Copyright (c) 2012 bsuir. All rights reserved.
 //
 
-#import "HotSpot.h"
 #import "Coordinates.h"
+#import "HotSpot.h"
 
 
-@implementation HotSpot
+@implementation Coordinates
 
-@dynamic bssid;
 @dynamic latitude;
 @dynamic longitude;
-@dynamic name;
-@dynamic encounters;
+@dynamic strength;
+@dynamic correspBssid;
+@dynamic whichHotSpot;
 
 @end

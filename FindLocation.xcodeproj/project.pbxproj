@@ -23,11 +23,13 @@
 		F2076B811527173A0005A2BE /* StartingPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2076B7F1527173A0005A2BE /* StartingPointViewController.m */; };
 		F2076B821527173A0005A2BE /* StartingPointViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2076B801527173A0005A2BE /* StartingPointViewController.xib */; };
 		F2076B891527534B0005A2BE /* HotSpotAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2076B881527534B0005A2BE /* HotSpotAnnotation.m */; };
+		F275E869157A6A5500BC4DA4 /* HotSpot.m in Sources */ = {isa = PBXBuildFile; fileRef = F275E868157A6A5500BC4DA4 /* HotSpot.m */; };
+		F275E86F157A6E2700BC4DA4 /* Coordinates+Location.m in Sources */ = {isa = PBXBuildFile; fileRef = F275E86E157A6E2700BC4DA4 /* Coordinates+Location.m */; };
+		F275E872157A741600BC4DA4 /* Coordinates.m in Sources */ = {isa = PBXBuildFile; fileRef = F275E871157A741600BC4DA4 /* Coordinates.m */; };
 		F27AEF4F15613BFC000BF81E /* stuff_back.png in Resources */ = {isa = PBXBuildFile; fileRef = F27AEF4C15613BFC000BF81E /* stuff_back.png */; };
 		F27AEF5115613CB7000BF81E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F27AEF5015613CB7000BF81E /* Default.png */; };
 		F27AEF531562FDAE000BF81E /* start_back.png in Resources */ = {isa = PBXBuildFile; fileRef = F27AEF521562FDAE000BF81E /* start_back.png */; };
 		F27AEF551562FEB2000BF81E /* 02.png in Resources */ = {isa = PBXBuildFile; fileRef = F27AEF541562FEB2000BF81E /* 02.png */; };
-		F27AEF5A157740AB000BF81E /* HotSpot.m in Sources */ = {isa = PBXBuildFile; fileRef = F27AEF57157740A9000BF81E /* HotSpot.m */; };
 		F27AEF5B157740AB000BF81E /* HotSpot+Network.m in Sources */ = {isa = PBXBuildFile; fileRef = F27AEF59157740AB000BF81E /* HotSpot+Network.m */; };
 		F27AEF5E157740D9000BF81E /* HotSpotModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F27AEF5C157740D9000BF81E /* HotSpotModel.xcdatamodeld */; };
 		F282AFE8152E430F00EC987C /* NetworkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F282AFE7152E430F00EC987C /* NetworkInfo.m */; };
@@ -64,12 +66,16 @@
 		F2076B801527173A0005A2BE /* StartingPointViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartingPointViewController.xib; sourceTree = "<group>"; };
 		F2076B871527534B0005A2BE /* HotSpotAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotSpotAnnotation.h; sourceTree = "<group>"; };
 		F2076B881527534B0005A2BE /* HotSpotAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotSpotAnnotation.m; sourceTree = "<group>"; };
+		F275E867157A6A5500BC4DA4 /* HotSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotSpot.h; sourceTree = "<group>"; };
+		F275E868157A6A5500BC4DA4 /* HotSpot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotSpot.m; sourceTree = "<group>"; };
+		F275E86D157A6E2700BC4DA4 /* Coordinates+Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Coordinates+Location.h"; sourceTree = "<group>"; };
+		F275E86E157A6E2700BC4DA4 /* Coordinates+Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Coordinates+Location.m"; sourceTree = "<group>"; };
+		F275E870157A741500BC4DA4 /* Coordinates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coordinates.h; sourceTree = "<group>"; };
+		F275E871157A741600BC4DA4 /* Coordinates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coordinates.m; sourceTree = "<group>"; };
 		F27AEF4C15613BFC000BF81E /* stuff_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stuff_back.png; sourceTree = "<group>"; };
 		F27AEF5015613CB7000BF81E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		F27AEF521562FDAE000BF81E /* start_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start_back.png; sourceTree = "<group>"; };
 		F27AEF541562FEB2000BF81E /* 02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02.png; sourceTree = "<group>"; };
-		F27AEF56157740A9000BF81E /* HotSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotSpot.h; sourceTree = "<group>"; };
-		F27AEF57157740A9000BF81E /* HotSpot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotSpot.m; sourceTree = "<group>"; };
 		F27AEF58157740AA000BF81E /* HotSpot+Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HotSpot+Network.h"; sourceTree = "<group>"; };
 		F27AEF59157740AB000BF81E /* HotSpot+Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HotSpot+Network.m"; sourceTree = "<group>"; };
 		F27AEF5D157740D9000BF81E /* HotSpotModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HotSpotModel.xcdatamodel; sourceTree = "<group>"; };
@@ -138,15 +144,17 @@
 		F2076B51152715610005A2BE /* FindLocation */ = {
 			isa = PBXGroup;
 			children = (
-				F27AEF56157740A9000BF81E /* HotSpot.h */,
-				F27AEF57157740A9000BF81E /* HotSpot.m */,
+				F27AEF5C157740D9000BF81E /* HotSpotModel.xcdatamodeld */,
+				F275E867157A6A5500BC4DA4 /* HotSpot.h */,
+				F275E868157A6A5500BC4DA4 /* HotSpot.m */,
 				F27AEF58157740AA000BF81E /* HotSpot+Network.h */,
 				F27AEF59157740AB000BF81E /* HotSpot+Network.m */,
-				F2F6C7D9154605B900DF62B5 /* CoreDataTableViewController.h */,
-				F2F6C7DA154605B900DF62B5 /* CoreDataTableViewController.m */,
+				F275E870157A741500BC4DA4 /* Coordinates.h */,
+				F275E871157A741600BC4DA4 /* Coordinates.m */,
+				F275E86D157A6E2700BC4DA4 /* Coordinates+Location.h */,
+				F275E86E157A6E2700BC4DA4 /* Coordinates+Location.m */,
 				F2076B871527534B0005A2BE /* HotSpotAnnotation.h */,
 				F2076B881527534B0005A2BE /* HotSpotAnnotation.m */,
-				F27AEF5C157740D9000BF81E /* HotSpotModel.xcdatamodeld */,
 				F2076B7E1527173A0005A2BE /* StartingPointViewController.h */,
 				F2076B7F1527173A0005A2BE /* StartingPointViewController.m */,
 				F2076B801527173A0005A2BE /* StartingPointViewController.xib */,
@@ -174,6 +182,8 @@
 		F2076B52152715610005A2BE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F2F6C7D9154605B900DF62B5 /* CoreDataTableViewController.h */,
+				F2F6C7DA154605B900DF62B5 /* CoreDataTableViewController.m */,
 				F27AEF521562FDAE000BF81E /* start_back.png */,
 				F27AEF5015613CB7000BF81E /* Default.png */,
 				F27AEF541562FEB2000BF81E /* 02.png */,
@@ -267,9 +277,11 @@
 				F282AFF1152F9C3600EC987C /* NetworkDetailViewController.m in Sources */,
 				F2F6C7C61538DAA900DF62B5 /* StuffViewController.m in Sources */,
 				F2F6C7DB154605B900DF62B5 /* CoreDataTableViewController.m in Sources */,
-				F27AEF5A157740AB000BF81E /* HotSpot.m in Sources */,
 				F27AEF5B157740AB000BF81E /* HotSpot+Network.m in Sources */,
 				F27AEF5E157740D9000BF81E /* HotSpotModel.xcdatamodeld in Sources */,
+				F275E869157A6A5500BC4DA4 /* HotSpot.m in Sources */,
+				F275E86F157A6E2700BC4DA4 /* Coordinates+Location.m in Sources */,
+				F275E872157A741600BC4DA4 /* Coordinates.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

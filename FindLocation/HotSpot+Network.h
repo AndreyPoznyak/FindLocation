@@ -18,10 +18,12 @@
 
 //!Method hotSpotWithNetworkInfo
 /*!This method provide hotSpot object to store it in DB*/
-+ (HotSpot*)hotSpotWithNetworkInfo:(NetworkInfo*)network inManagedObjectContext:(NSManagedObjectContext*)context;
++ (HotSpot*)hotSpotWithName:(NSString*)name withBssid:(NSString*)bssid inManagedObjectContext:(NSManagedObjectContext*)context;
+
++ (void)recordNewLocation:(NSString*)bssid withLongitude:(double)longitude withLatitude:(double)latitude inManagedObjectContext:(NSManagedObjectContext*)context;
 
 //!Method evaluateLocation
 /*!This method estimates location of hotspot if amount of data allows to do it*/
-+ (HotSpot*)evaluateLocation:(HotSpot*)network;
+//+ (HotSpot*)evaluateLocation:(HotSpot*)network;
 
 @end

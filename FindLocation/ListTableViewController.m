@@ -8,7 +8,7 @@
 
 #import "ListTableViewController.h"
 #import "FindLocationAppDelegate.h"
-#import "HotSpot+Network.h"
+#import "Coordinates+Location.h"
 #include <dlfcn.h>
 #include "StuffViewController.h"
 
@@ -131,7 +131,7 @@ BOOL nothingToShow = NO; //if list of hotspots is empty we need to push navigati
     //    [context performBlock:^{
             for(NetworkInfo *network in self.listOfHotSpots)
             {
-                [HotSpot hotSpotWithNetworkInfo:network inManagedObjectContext:context];
+                [Coordinates coordinatesWithNetworkInfo:network inManagedObjectContext:context];
             }
      //   }];
     //});
@@ -198,6 +198,7 @@ BOOL nothingToShow = NO; //if list of hotspots is empty we need to push navigati
         UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(refresh:)];
         self.navigationItem.rightBarButtonItem = refreshButton;
         self.listOfHotSpots = [self getListOfHotSpots];
+        [self fetchDataIntoContext:self.managedObjectContext];
     }
     else {
         [self useDocument];
@@ -253,12 +254,17 @@ BOOL nothingToShow = NO; //if list of hotspots is empty we need to push navigati
     } else {
         HotSpot *hotSpot = [self.fetchedResultsController objectAtIndexPath:indexPath];
         cell.textLabel.text = hotSpot.name;
-        int i = 1;
-        if(![hotSpot.strength3 isEqualToNumber:[NSNumber numberWithDouble:0]]) i = 3;
-        else if(![hotSpot.strength2 isEqualToNumber:[NSNumber numberWithDouble:0]]) i = 2;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"Number of detections: %d", i];
+        
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Coordinates" inManagedObjectContext:self.managedObjectContext];
+        [request setEntity:entity];
+        request.predicate = [NSPredicate predicateWithFormat:@"correspBssid = %@", hotSpot.bssid];
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"correspBssid" ascending:YES];
+        request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+        NSError *error = nil;
+        int num = [self.managedObjectContext countForFetchRequest:request error:&error];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"Number of detections: %d", num];
     }
-    
     return cell;
 }
 
