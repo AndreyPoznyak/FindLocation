@@ -13,4 +13,6 @@
 /*!ViewController class for menu. Contains only private members*/
 @interface StartingPointViewController : UIViewController
 
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *labelForLocation;
+
 @end

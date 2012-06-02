@@ -7,6 +7,7 @@
 //
 
 #import "NetworkDetailViewController.h"
+#import "FindLocationAppDelegate.h"
 
 @interface NetworkDetailViewController()
 @property BOOL currentHotSpotOrHistory;
@@ -61,7 +62,12 @@
     if(self.currentHotSpotOrHistory == YES)
     {
         self.navigationItem.title = self.nameField.text = self.currentNetwork.networkName;
-        self.bssidFiled.text = self.currentNetwork.networkBSSID;
+        //self.bssidFiled.text = self.currentNetwork.networkBSSID;
+        FindLocationAppDelegate *appDelegate = (FindLocationAppDelegate*)[[UIApplication sharedApplication] delegate];
+        [appDelegate refreshLocation];
+        NSNumber *latitude = [NSNumber numberWithDouble:appDelegate.currentLatitude];
+        NSNumber *longitude = [NSNumber numberWithDouble:appDelegate.currentLongitude];
+        self.bssidFiled.text = [NSString stringWithFormat:@"(%@, %@)", [latitude stringValue], [longitude stringValue]];
         self.signalField.text = self.currentNetwork.signalStrength;
         self.textField.hidden = YES;
     } else {

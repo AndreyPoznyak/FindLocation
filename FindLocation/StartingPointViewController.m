@@ -13,6 +13,7 @@
 #import "HotSpotAnnotation.h"
 
 @implementation StartingPointViewController
+@synthesize labelForLocation = _labelForLocation;
 
 //- (void)pushEmtyView:(NSNotification*)notif
 //{
@@ -31,6 +32,26 @@
     [listController setCurrentListOrHistory:YES];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushEmtyView:) name:@"NoHotSpots" object:nil];
     [self.navigationController pushViewController:listController animated:YES];
+}
+
+- (void)updateLabel
+{
+    FindLocationAppDelegate *appDelegate = (FindLocationAppDelegate*)[[UIApplication sharedApplication] delegate];
+//   while(1)
+//    {
+        [appDelegate refreshLocation];
+        NSNumber *latitude = [NSNumber numberWithDouble:appDelegate.currentLatitude];
+        NSNumber *longitude = [NSNumber numberWithDouble:appDelegate.currentLongitude];
+        self.labelForLocation.text = [NSString stringWithFormat:@"Curr Loc: (%@, %@)", [latitude stringValue], [longitude stringValue]];
+ //       NSDate *future = [NSDate dateWithTimeIntervalSinceNow:0.06];
+ //       [NSThread sleepUntilDate:future];
+//    }
+}
+- (IBAction)refreshLabel
+{
+    //[self updateLabel];
+    NSTimer *timer = [NSTimer timerWithTimeInterval:1.0f target:self selector:@selector(updateLabel) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
 /*!method returns array of annotations whick we have to put on map*/
@@ -109,8 +130,23 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"start_back.png"]];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+//    FindLocationAppDelegate *appDelegate = (FindLocationAppDelegate*)[[UIApplication sharedApplication] delegate];
+//    while(1)
+//    {
+//        [appDelegate refreshLocation];
+//        NSNumber *latitude = [NSNumber numberWithDouble:appDelegate.currentLatitude];
+//        NSNumber *longitude = [NSNumber numberWithDouble:appDelegate.currentLongitude];
+//        self.labelForLocation.text = [NSString stringWithFormat:@"Curr Loc: (%@, %@)", [latitude stringValue], [longitude stringValue]];
+//        NSDate *future = [NSDate dateWithTimeIntervalSinceNow:0.06];
+//        [NSThread sleepUntilDate:future];
+//    }
+}
+
 - (void)viewDidUnload
 {
+    [self setLabelForLocation:nil];
     [super viewDidUnload];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     // Release any retained subviews of the main view.
