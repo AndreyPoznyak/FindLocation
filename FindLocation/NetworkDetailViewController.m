@@ -78,8 +78,8 @@
         self.strengthLabel.text = @"Locations:";
         self.bssidFiled.text = self.currentHotSpot.bssid;
         self.nameField.text = self.currentHotSpot.name;
-//        self.textField.text = [NSString stringWithFormat:@"%@;%@ (%@)\n%@;%@ (%@)\n%@;%@ (%@)", 
-//                                 [self.currentHotSpot.latitude1 stringValue], [self.currentHotSpot.longitude1 stringValue],
+        self.textField.text = [NSString stringWithFormat:@"(%@;%@)", 
+                               [self.currentHotSpot.latitude stringValue], [self.currentHotSpot.longitude stringValue]];
 //                                [self.currentHotSpot.strength1 stringValue], [self.currentHotSpot.latitude2 stringValue], [self.currentHotSpot.longitude2 stringValue], [self.currentHotSpot.strength2 stringValue],
 //                               [self.currentHotSpot.latitude3 stringValue], [self.currentHotSpot.longitude3 stringValue],
 //                               [self.currentHotSpot.strength3 stringValue]];

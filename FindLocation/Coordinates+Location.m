@@ -104,9 +104,9 @@
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     NSError *error = nil;
     NSArray *matches = [context executeFetchRequest:request error:&error];
-    int numOfCoord = [matches count];
+    //int numOfCoord = [matches count];
     //int sumOfStrengths = 0;
-    int index = 0;
+    //int index = 0;
     double x = 0, y = 0;
     Coordinates *coord = nil;
 //    for(index = 0; index < numOfCoord; index++)          //simple method of evaluation
@@ -124,7 +124,8 @@
     int i = 0;
     Coordinates *newCoord = nil;
     //NSLog([NSString stringWithFormat:@" mathes: %d", [newArray count]]);
-    for(;;)
+    int qua =0;
+    while(1)
     {
         //NSLog([NSString stringWithFormat:@" mathes: %d", [newArray count]]);
         //double lat = 0, lon = 0, str = 0;
@@ -133,6 +134,7 @@
         [latitudes addObject:coord.latitude];
         [strengths addObject:coord.strength];
         i++;
+        qua++;
         [newArray removeLastObject];
         if(i == 3)
         {
@@ -140,7 +142,10 @@
             coord.latitude = [NSNumber numberWithDouble:[[arr objectAtIndex:0] doubleValue]];
             coord.longitude = [NSNumber numberWithDouble:[[arr objectAtIndex:1] doubleValue]];
             coord.strength = [NSNumber numberWithInt:[[arr objectAtIndex:2] intValue]];
-            [newArray addObject:coord];
+            NSArray *temp = [[NSArray alloc] initWithArray:newArray];
+            [newArray removeAllObjects];
+            [newArray addObject:coord];//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            [newArray addObjectsFromArray:temp];
             i = 0;
             [longitudes removeAllObjects];
             [latitudes removeAllObjects];
@@ -148,13 +153,20 @@
         } //else 
         //
         //}
-        if([newArray count] == 2)
+        if(([newArray count] == 2) && (qua != 1))
         {
             Coordinates *c1 = nil, *c2 = nil;
             c1 = [newArray objectAtIndex:0];
             c2 = [newArray objectAtIndex:1];
             y = ([c1.longitude doubleValue]+ [c2.longitude doubleValue])/2;
             x = ([c1.latitude doubleValue]+ [c2.latitude doubleValue])/2;
+            break;
+        } else if(([newArray count] == 1) && (qua != 2))
+        {
+            Coordinates *c1 = nil;
+            c1 = [newArray objectAtIndex:0];
+            y = [c1.longitude doubleValue];
+            x = [c1.latitude doubleValue];
             break;
         }
     }
@@ -172,7 +184,9 @@
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Coordinates" inManagedObjectContext:context];
 	[request setEntity:entity];
-    request.predicate = [NSPredicate predicateWithFormat:@"(longitude = %f) AND (latitude = %f) AND (correspBssid = %@)", [longitude doubleValue], [latitude doubleValue], network.networkBSSID];
+    //NSLog([latitude stringValue]);
+    request.predicate = [NSPredicate predicateWithFormat:@"(longitude = %@) AND (latitude = %@) AND (correspBssid = %@)", longitude, latitude, network.networkBSSID];
+    //request.predicate = [NSPredicate predicateWithFormat:@"(longitude = %@)", longitude];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"correspBssid" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
@@ -181,6 +195,7 @@
     
     if(!matches || [matches count] > 1)
     {
+        NSLog(@"Error with matches");
         //handle this error somehow here
     }
     else if([matches count] == 0)
@@ -196,11 +211,13 @@
         int num = [context countForFetchRequest:request error:&error];
         if(num > 2)
         {
+            NSLog(@"Location is going to be evaluated");
             [self evaluateLocation:network.networkBSSID inManagedObjectContext:context];
         }
     }
     else
     {
+        NSLog(@"Already exist!!!");
         newCoordinates = [matches lastObject];
     }
     return newCoordinates;

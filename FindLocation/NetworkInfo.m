@@ -28,7 +28,7 @@
     [net setSignalStrength:[NSString stringWithFormat:@"%@", strength]];
     [net setNetworkBSSID:bssid];
     [net setIsCurrent:current];
-    [self writeToDBifNew:net];
+    //[self writeToDBifNew:net];
     return net;
 }
 
