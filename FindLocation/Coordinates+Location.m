@@ -144,7 +144,7 @@
             coord.strength = [NSNumber numberWithInt:[[arr objectAtIndex:2] intValue]];
             NSArray *temp = [[NSArray alloc] initWithArray:newArray];
             [newArray removeAllObjects];
-            [newArray addObject:coord];//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            [newArray addObject:coord];//!!!!!!
             [newArray addObjectsFromArray:temp];
             i = 0;
             [longitudes removeAllObjects];
